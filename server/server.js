@@ -66,7 +66,15 @@ app.use(helmet({
   },
 }));
 
-app.use(cors({ origin: process.env.NODE_ENV === 'production' ? false : '*' }));
+const ALLOWED_ORIGINS = process.env.NODE_ENV === 'production'
+  ? [process.env.FRONTEND_URL].filter(Boolean)   // set FRONTEND_URL=https://your-site.netlify.app in Render dashboard
+  : ['*'];
+app.use(cors({
+  origin: (origin, cb) => {
+    if (!origin || ALLOWED_ORIGINS.includes('*') || ALLOWED_ORIGINS.includes(origin)) return cb(null, true);
+    cb(new Error('Not allowed by CORS'));
+  }
+}));
 app.use(express.json({ limit: '1mb' }));
 
 // Rate limiting – 60 requests per minute per IP

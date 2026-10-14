@@ -1,0 +1,86 @@
+[build]
+  publish = "public"
+
+# Proxy /api/* → Render backend (avoids CORS, keeps same origin for the browser)
+# ⚠️  Replace YOUR_RENDER_URL with your actual Render service URL
+#     e.g. https://crop-ai.onrender.com
+[[redirects]]
+  from   = "/api/*"
+  to     = "https://YOUR_RENDER_URL/api/:splat"
+  status = 200
+  force  = true
+
+# Clean URLs: serve /faq → /faq.html, /about → /about.html, etc.
+[[redirects]]
+  from = "/app"
+  to   = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to   = "/faq.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to   = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to   = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to   = "/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to   = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/background-remover"
+  to   = "/background-remover.html"
+  status = 200
+
+[[redirects]]
+  from = "/crop-image-by-text"
+  to   = "/crop-image-by-text.html"
+  status = 200
+
+[[redirects]]
+  from = "/product-photo-background-remover"
+  to   = "/product-photo-background-remover.html"
+  status = 200
+
+[[redirects]]
+  from = "/extract-object-from-image"
+  to   = "/extract-object-from-image.html"
+  status = 200
+
+[[redirects]]
+  from = "/youtube-thumbnail-cutout"
+  to   = "/youtube-thumbnail-cutout.html"
+  status = 200
+
+[[redirects]]
+  from = "/profile-picture-cropper"
+  to   = "/profile-picture-cropper.html"
+  status = 200
+
+[[redirects]]
+  from = "/sticker-maker"
+  to   = "/sticker-maker.html"
+  status = 200
+
+# 404 fallback
+[[redirects]]
+  from   = "/*"
+  to     = "/404.html"
+  status = 404
+
+[build.environment]
+  NODE_VERSION = "18"

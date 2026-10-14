@@ -17,6 +17,13 @@
 
 'use strict';
 
+// ─── Backend URL ──────────────────────────────────────────────────────────────
+// When the frontend is hosted on Netlify and the backend is on Render,
+// set window.CROPAI_API_BASE to the Render URL before this script loads,
+// OR define it in netlify.toml as a redirect proxy (see netlify.toml).
+// Falls back to '' (same origin) when running locally or on Render.
+const API_BASE = (typeof window !== 'undefined' && window.CROPAI_API_BASE) || '';
+
 // ─── State ───────────────────────────────────────────────────────────────────
 
 const state = {
@@ -149,7 +156,7 @@ function showToast(message, type = 'info', durationMs = 3500) {
 
 async function checkApiStatus() {
   try {
-    const res  = await fetch('/api/health');
+    const res  = await fetch(API_BASE + '/api/health');
     const data = await res.json();
 
     if (data.apiConfigured) {
@@ -205,7 +212,7 @@ async function uploadFile(file) {
   formData.append('image', file);
 
   try {
-    const res  = await fetch('/api/upload', { method: 'POST', body: formData });
+    const res  = await fetch(API_BASE + '/api/upload', { method: 'POST', body: formData });
     const data = await res.json();
 
     if (!res.ok) {
@@ -353,7 +360,7 @@ async function callCropApi(prompt, previousResult) {
 
   const removeBg = dom.removeBgCheckbox ? dom.removeBgCheckbox.checked : false;
 
-  const res = await fetch('/api/crop', {
+  const res = await fetch(API_BASE + '/api/crop', {
     method:  'POST',
     headers: { 'Content-Type': 'application/json' },
     body:    JSON.stringify({ fileId: state.fileId, prompt, previousResult, removeBg }),
@@ -537,7 +544,7 @@ function showAmbiguousStage(data, prompt) {
         const promises = selectedOptions.map(async (opt) => {
           try {
             const removeBg = dom.removeBgCheckbox ? dom.removeBgCheckbox.checked : false;
-            const res = await fetch('/api/crop-direct', {
+            const res = await fetch(API_BASE + '/api/crop-direct', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ fileId: state.fileId, boundingBox: opt.bounding_box, removeBg }),
@@ -641,7 +648,7 @@ function showResultStage(data, multiResults = null) {
       dlBtn.innerHTML = '⬇️ PNG';
       dlBtn.onclick = () => {
          const a = document.createElement('a');
-         a.href = `/api/download/${res.outputId}/png`;
+         a.href = `${API_BASE}/api/download/${res.outputId}/png`;
          a.download = `cropai_${res.target}_${Date.now()}.png`;
          document.body.appendChild(a);
          a.click();
@@ -839,7 +846,7 @@ document.getElementById('download-all-zip-btn')?.addEventListener('click', async
     
     for (let i = 0; i < state.currentMultiResults.length; i++) {
       const res = state.currentMultiResults[i];
-      const url = `/api/download/${res.outputId}/png`;
+      const url = `${API_BASE}/api/download/${res.outputId}/png`;
       const response = await fetch(url);
       if (response.ok) {
         const blob = await response.blob();
@@ -875,7 +882,7 @@ dom.downloadJpgBtn.addEventListener('click', () => downloadResult('jpg'));
 async function downloadResult(format) {
   if (!state.outputId) return;
 
-  const url      = `/api/download/${state.outputId}/${format}`;
+  const url      = `${API_BASE}/api/download/${state.outputId}/${format}`;
   const filename = `cropai_${state.lastAIResult?.target || 'result'}_${Date.now()}.${format}`;
 
   try {
