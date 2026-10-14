@@ -79,6 +79,9 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
+// ─── Health Check (required by Render) ───────────────────────────────────────
+app.get('/health', (_req, res) => res.json({ status: 'ok' }));
+
 // Canonical URL Redirect: Redirect /page.html -> /page and /index.html -> /
 app.use((req, res, next) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') return next();

@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: cropai
+    runtime: node
+    plan: free
+    buildCommand: npm install && pip install -r requirements.txt
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: OPENROUTER_API_KEY
+        sync: false          # set manually in Render dashboard
+      - key: VISION_MODEL
+        value: google/gemini-2.5-flash
+      - key: SEGMENTATION_PROVIDER
+        value: local_python
+      - key: MAX_FILE_SIZE
+        value: 10485760
+      - key: FILE_TTL_MS
+        value: 3600000
