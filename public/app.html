@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CropAI App: Crop or Remove Background from Your Image</title>
+  <meta name="description" content="Upload any image and describe what to crop. CropAI's AI finds and extracts it with background removal and transparent PNG export." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#05050f" />
+  <link rel="canonical" href="https://cropai.app/app" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+</head>
+<body>
+
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ── Header ──────────────────────────────────────────────────────── -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#logoGrad)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
+                <stop offset="0%" stop-color="#7c3aed"/>
+                <stop offset="100%" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <div class="header-badge" id="api-status-badge" aria-live="polite">
+        <span class="badge-dot"></span>
+        <span class="badge-label">Checking…</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main Content ─────────────────────────────────────────────────── -->
+  <main class="main" role="main">
+
+    <!-- Compact app heading (one H1, keyword-light for tool page) -->
+    <section class="hero" aria-labelledby="app-heading" style="padding-bottom: 0;">
+      <h1 id="app-heading" class="hero-title" style="font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin-bottom: 0.5rem;">
+        Upload an image and <span class="gradient-text">describe what to crop</span>
+      </h1>
+      <p class="hero-subtitle" style="margin-bottom: 0; font-size: 0.95rem;">
+        AI finds it · Smart crop or transparent background · Download instantly
+      </p>
+    </section>
+
+    <!-- ── Upload Stage ───────────────────────────────────────────────── -->
+    <section id="upload-stage" class="stage active" aria-label="Upload image">
+      <div
+        id="drop-zone"
+        class="drop-zone"
+        role="button"
+        tabindex="0"
+        aria-label="Drop an image here or click to browse"
+        aria-describedby="upload-formats"
+      >
+        <input
+          type="file"
+          id="file-input"
+          accept="image/png,image/jpeg,image/webp"
+          tabindex="-1"
+          style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0,0,0,0);"
+        />
+        <div class="drop-zone-inner">
+          <div class="drop-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="12" width="56" height="40" rx="8" stroke="currentColor" stroke-width="2.5" stroke-dasharray="6 4"/>
+              <path d="M32 38 L32 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M26 30 L32 24 L38 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 48 L12 56" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+              <path d="M44 48 L52 56" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+          </div>
+          <p class="drop-title">Drop your image here</p>
+          <p class="drop-subtitle">or <span class="drop-link">click to browse</span></p>
+          <p id="upload-formats" class="drop-formats">PNG · JPG · WEBP · up to 10 MB</p>
+        </div>
+        <div class="drop-zone-hover-overlay" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ── Prompt Stage ───────────────────────────────────────────────── -->
+    <section id="prompt-stage" class="stage" aria-label="Describe your crop" hidden>
+
+      <!-- Preview + meta -->
+      <div class="preview-container">
+        <div class="preview-wrapper">
+          <img id="preview-image" class="preview-image" alt="Uploaded image preview" />
+          <div class="preview-overlay" aria-hidden="true">
+            <div id="detection-box" class="detection-box" style="display:none;" role="img" aria-label="Detected region overlay"></div>
+          </div>
+          <button id="replace-image-btn" title="Upload a different image" style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: white; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 6px 12px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; z-index: 10;">
+            🔄 Replace Image
+          </button>
+        </div>
+        <div class="preview-meta" id="image-meta" aria-live="polite"></div>
+      </div>
+
+      <!-- Prompt input -->
+      <div class="prompt-container">
+        <div class="prompt-header">
+          <label for="prompt-input" class="prompt-label">What do you want to extract?</label>
+          <span class="prompt-char-count" id="char-count" aria-live="polite">0 / 500</span>
+        </div>
+        <div class="prompt-input-wrapper">
+          <textarea
+            id="prompt-input"
+            class="prompt-input"
+            placeholder="Describe what you want to extract..."
+            maxlength="500"
+            rows="2"
+            aria-describedby="prompt-hint"
+            disabled
+          ></textarea>
+          <button
+            id="crop-btn"
+            class="crop-btn"
+            disabled
+            aria-label="Start AI crop"
+          >
+            <span class="crop-btn-text">AI Crop</span>
+            <span class="crop-btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+        <p id="prompt-hint" class="prompt-hint">
+          Be as descriptive as you like – include position, color, size, or relationships.
+        </p>
+
+        <div class="options-container" style="margin-top: 12px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" id="remove-bg-checkbox" name="removeBg" style="width: 16px; height: 16px; cursor: pointer;" />
+          <label for="remove-bg-checkbox" style="color: var(--text-secondary); font-size: 0.95rem; cursor: pointer;">Remove Background (Transparent PNG)</label>
+        </div>
+
+        <!-- Example chips -->
+        <div class="chips-container" role="group" aria-label="Example prompts">
+          <p class="chips-label">Try an example:</p>
+          <div class="chips" id="chips-wrapper">
+            <button class="chip" data-prompt="Crop the mountain" type="button">🏔️ Crop the mountain</button>
+            <button class="chip" data-prompt="Extract the person" type="button">🧍 Extract the person</button>
+            <button class="chip" data-prompt="Get the logo" type="button">🔷 Get the logo</button>
+            <button class="chip" data-prompt="Remove the background" type="button">✂️ Remove the background</button>
+            <button class="chip" data-prompt="Crop the red car" type="button">🚗 Crop the red car</button>
+            <button class="chip" data-prompt="Extract the dog" type="button">🐕 Extract the dog</button>
+            <button class="chip" data-prompt="Extract the person on the left" type="button">👈 Extract the person on the left</button>
+            <button class="chip" data-prompt="Crop the text at the bottom" type="button">📝 Crop the text at the bottom</button>
+            <button class="chip" data-prompt="Isolate the main subject" type="button">🎯 Isolate the main subject</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Start over button -->
+      <button id="start-over-btn-prompt" class="text-btn" type="button" aria-label="Start over and upload a new image">
+        ← Upload a different image
+      </button>
+    </section>
+
+    <!-- ── Loading Stage ──────────────────────────────────────────────── -->
+    <section id="loading-stage" class="stage" aria-label="Processing" hidden aria-live="assertive" aria-busy="true">
+      <div class="loading-container">
+        <div class="loading-animation" aria-hidden="true">
+          <div class="loading-ring ring-1"></div>
+          <div class="loading-ring ring-2"></div>
+          <div class="loading-ring ring-3"></div>
+          <div class="loading-icon">🤖</div>
+        </div>
+        <h2 class="loading-title">AI is analyzing your image…</h2>
+        <div class="loading-steps" id="loading-steps">
+          <div class="loading-step active" id="step-analyze">
+            <span class="step-dot"></span>
+            <span>Analyzing image content</span>
+          </div>
+          <div class="loading-step" id="step-locate">
+            <span class="step-dot"></span>
+            <span>Locating target object</span>
+          </div>
+          <div class="loading-step" id="step-extract">
+            <span class="step-dot"></span>
+            <span>Extracting region</span>
+          </div>
+          <div class="loading-step" id="step-process">
+            <span class="step-dot"></span>
+            <span>Processing output</span>
+          </div>
+        </div>
+        <button id="cancel-btn" class="text-btn" type="button">Cancel</button>
+      </div>
+    </section>
+
+    <!-- ── Ambiguous Stage ────────────────────────────────────────────── -->
+    <section id="ambiguous-stage" class="stage" aria-label="Clarification needed" hidden>
+      <div class="ambiguous-container">
+        <div class="ambiguous-icon" aria-hidden="true">🤔</div>
+        <h2 class="ambiguous-title">I need a bit more info</h2>
+        <p id="ambiguous-message" class="ambiguous-message"></p>
+        <div id="ambiguous-options" class="ambiguous-options" role="group" aria-label="Select which object you mean"></div>
+        <button id="ambiguous-extract-all-btn" class="btn btn-primary" type="button" style="margin-top: 16px; width: 100%; display: none; margin-bottom: 12px;">Extract All Separately</button>
+        <button id="ambiguous-back-btn" class="text-btn" type="button">← Rephrase my prompt</button>
+      </div>
+    </section>
+
+    <!-- ── Error Stage ────────────────────────────────────────────────── -->
+    <section id="error-stage" class="stage" aria-label="Error" hidden role="alert">
+      <div class="error-container">
+        <div class="error-icon" aria-hidden="true">⚠️</div>
+        <h2 class="error-title">Something went wrong</h2>
+        <p id="error-message" class="error-message"></p>
+        <div class="error-actions">
+          <button id="error-retry-btn" class="btn btn-primary" type="button">Try Again</button>
+          <button id="error-start-over-btn" class="btn btn-ghost" type="button">Start Over</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Result Stage ───────────────────────────────────────────────── -->
+    <section id="result-stage" class="stage" aria-label="Crop result" hidden>
+
+      <div class="result-header">
+        <div class="result-badge" id="result-mode-badge" aria-live="polite"></div>
+        <div class="result-meta" id="result-meta" aria-live="polite"></div>
+      </div>
+
+      <!-- Multi-result grid -->
+      <div id="multi-result-container" style="display: none; margin-top: 16px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="color: var(--text-primary); font-size: 1.1rem; margin: 0;">Extracted Objects</h3>
+          <button id="download-all-zip-btn" class="btn btn-primary" type="button" style="padding: 6px 12px; font-size: 0.9rem;">
+            📦 Download All (ZIP)
+          </button>
+        </div>
+        <div id="multi-result-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Side-by-side comparison (Single Mode) -->
+      <div class="comparison-grid" id="single-comparison-grid">
+        <!-- Original -->
+        <div class="comparison-panel">
+          <div class="panel-label">
+            <span class="panel-label-dot original-dot" aria-hidden="true"></span>
+            Original
+          </div>
+          <div class="panel-image-wrapper" id="original-panel-wrapper">
+            <img id="original-result-img" class="panel-image" alt="Original uploaded image" />
+            <canvas id="overlay-canvas" class="overlay-canvas" aria-hidden="true" role="presentation"></canvas>
+            <button
+              id="toggle-overlay-btn"
+              class="overlay-toggle-btn"
+              type="button"
+              aria-pressed="false"
+              aria-label="Toggle detected region overlay"
+            >
+              <span class="overlay-btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="2" y="2" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/>
+                  <rect x="5" y="5" width="10" height="10" rx="1.5" fill="currentColor" opacity="0.3"/>
+                </svg>
+              </span>
+              Show region
+            </button>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="comparison-arrow" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="rgba(124,58,237,0.2)"/>
+            <path d="M14 20H26M26 20L21 15M26 20L21 25" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Result -->
+        <div class="comparison-panel">
+          <div class="panel-label">
+            <span class="panel-label-dot result-dot" aria-hidden="true"></span>
+            Result
+          </div>
+          <div class="panel-image-wrapper checkerboard" id="result-panel-wrapper">
+            <img id="result-img" class="panel-image" alt="AI-cropped result" />
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Info -->
+      <div class="ai-info-card" id="ai-info-card" aria-live="polite">
+        <div class="ai-info-row">
+          <span class="ai-info-label">Target</span>
+          <span class="ai-info-value" id="ai-target">—</span>
+        </div>
+        <div class="ai-info-row">
+          <span class="ai-info-label">Confidence</span>
+          <div class="confidence-bar-wrapper">
+            <div class="confidence-bar" id="confidence-bar"></div>
+            <span class="ai-info-value" id="ai-confidence">—</span>
+          </div>
+        </div>
+        <div class="ai-info-row" id="ai-instruction-row">
+          <span class="ai-info-label">AI reasoning</span>
+          <span class="ai-info-value ai-instruction" id="ai-instruction">—</span>
+        </div>
+      </div>
+
+      <!-- Fallback notice (user-friendly, no .env references) -->
+      <div class="fallback-notice" id="fallback-notice" hidden role="status">
+        <span class="fallback-icon" aria-hidden="true">ℹ️</span>
+        <span>Background removal used a standard crop for this image. For pixel-level extraction, enable a segmentation provider.</span>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="result-actions" role="group" aria-label="Result actions">
+        <button id="download-png-btn" class="btn btn-primary" type="button">
+          <span aria-hidden="true">⬇️</span> Download PNG
+        </button>
+        <button id="download-jpg-btn" class="btn btn-secondary" type="button">
+          <span aria-hidden="true">⬇️</span> Download JPG
+        </button>
+        <button id="try-another-btn" class="btn btn-ghost" type="button">
+          ✨ Try another crop
+        </button>
+        <button id="start-over-btn-result" class="btn btn-ghost" type="button">
+          🔄 Start over
+        </button>
+      </div>
+
+      <!-- Adjust (follow-up) panel -->
+      <div class="adjust-panel" id="adjust-panel" aria-label="Refine your extraction">
+        <div class="adjust-header">
+          <span class="adjust-icon" aria-hidden="true">🎯</span>
+          <div>
+            <h3 class="adjust-title">Refine with AI</h3>
+            <p class="adjust-subtitle">Tell the AI how to adjust the result</p>
+          </div>
+        </div>
+        <div class="adjust-examples">
+          <button class="chip chip-sm" data-adjust="Include the full shadow" type="button">Include the full shadow</button>
+          <button class="chip chip-sm" data-adjust="Remove the background completely" type="button">Remove the background completely</button>
+          <button class="chip chip-sm" data-adjust="Include more padding around the object" type="button">Add more padding</button>
+        </div>
+        <div class="prompt-input-wrapper">
+          <textarea
+            id="adjust-input"
+            class="prompt-input"
+            placeholder="E.g. 'Include its leash' or 'Remove the tree on the left'…"
+            maxlength="500"
+            rows="2"
+            aria-label="Refinement instruction"
+          ></textarea>
+          <button id="adjust-btn" class="crop-btn" type="button" aria-label="Apply refinement">
+            <span class="crop-btn-text">Adjust</span>
+            <span class="crop-btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4L12 20M12 4L8 8M12 4L16 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <nav style="margin-bottom: 10px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+      <a href="/faq">FAQ</a>
+    </nav>
+    <p>CropAI · Images are automatically deleted after 1 hour · <a href="/privacy">Privacy Policy</a></p>
+  </footer>
+
+  <!-- ── Toast Notification ─────────────────────────────────────────── -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Image Preview Modal -->
+  <div id="image-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+    <button id="close-modal-btn" aria-label="Close" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer;">&times;</button>
+    <img id="modal-img" class="checkerboard" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.5);" />
+  </div>
+
+  <script src="/app.js?v=2"></script>
+</body>
+</html>

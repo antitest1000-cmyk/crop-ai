@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CropAI FAQ: AI Image Cropping & Removal Questions | CropAI</title>
+  <meta name="description" content="Find clear answers to frequently asked questions about CropAI. Learn how text-prompt cropping works, privacy guarantees, file limits, and transparent exports." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://cropai.app/faq" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="CropAI" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cropai.app/faq" />
+  <meta property="og:title" content="CropAI FAQ: Answers to Image Cropping & Background Removal Questions" />
+  <meta property="og:description" content="Everything you need to know about CropAI: prompt-based image cropping, transparent PNG removal, data privacy, and commercial usage." />
+  <meta property="og:image" content="https://cropai.app/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CropAI FAQ: AI Image Cropping Guide" />
+  <meta name="twitter:description" content="Answers to common questions about using CropAI's free AI image cropper and background remover." />
+  <meta name="twitter:image" content="https://cropai.app/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cropai.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "FAQ",
+            "item": "https://cropai.app/faq"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cropai.app/faq#faqpage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is CropAI and how does it work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CropAI is a specialized AI-powered image cropping and object extraction tool designed to eliminate manual masking. Instead of drawing clumsy marquee boxes or using complex lasso tools in desktop editing software, you simply upload an image and type what you want to extract in natural English, such as 'the red sports car' or 'the person in the middle'. High-accuracy vision language models locate the object coordinates, and our graphics engine creates a precise bounding crop or extracts the subject onto a transparent background."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is CropAI completely free to use without sign-up or watermarks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, CropAI is 100% free to use. There are no paywalls, no monthly subscription tiers, no credit card requirements, and no mandatory account registrations. Furthermore, CropAI never imprints watermarks onto your finished pictures. You can crop single images, test multiple text prompts, and download clean high-resolution files immediately with zero friction."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does CropAI crop images using text prompts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When you enter a prompt, CropAI transmits your image to advanced multimodal vision models that understand semantic object relationships and spatial context. The AI analyzes spatial positions, colors, relative sizes, and natural descriptors to locate the exact bounding boundaries of the requested subject. Once the AI calculates these precise coordinates, our server-side engine executes a clean, high-fidelity crop or segmentation pass."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between Smart Crop and Remove Background in CropAI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Smart Crop produces a tight rectangular image focused strictly on your chosen subject, eliminating unnecessary negative space while retaining the subject's local surroundings. Remove Background goes one step further: it separates the subject from its surroundings at the pixel level, rendering everything else transparent and saving the cutout as a clean 32-bit PNG file. You can pick either mode with a single toggle before processing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can CropAI detect and cut out multiple objects from the same photo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. If your photo contains several items matching your prompt—for example, if you request 'coffee mugs' in a picture showing four distinct cups—CropAI detects and isolates each one individually. The interactive preview highlights each detected subject with separate bounding boxes, allowing you to select individual objects or download the entire collection simultaneously inside a organized ZIP archive."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the Adjust panel work for refining crops?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If the initial crop needs a minor adjustment, you do not have to re-upload your image. The interactive Adjust panel allows you to enter natural follow-up instructions, such as 'crop a bit wider', 'include the ground shadow', 'zoom closer to the face', or 'remove the hand holding the mug'. The vision AI reads your original photo alongside your modification prompt and immediately recalculates the optimal bounding box."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does CropAI work well with difficult subjects like hair, fur, and semi-transparent objects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, CropAI is engineered to handle intricate contours and fine edge details. When using the transparent background removal mode, our neural segmentation algorithms trace subtle gradients, pet fur, flyaway strands of hair, and detailed silhouettes far more accurately than standard color-range thresholding tools, yielding professional cutouts ready for e-commerce or thumbnail collages."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What image formats and file size limits are supported by CropAI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CropAI accepts standard modern web image formats, specifically PNG, JPG (JPEG), and WEBP files. The maximum upload size per individual photo is 10 MB, which comfortably accommodates high-resolution camera captures, product photography, and smartphone photos. If an uploaded file exceeds this limit, an alert prompts you to optimize the file size before proceeding."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "In what file formats can I download my final cropped images?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When using background removal mode, your image is automatically exported as a transparent PNG to preserve complete alpha channel transparency. For standard rectangular smart crops, you have the flexibility to download your result as either a high-quality PNG or an optimized JPG file depending on your workflow requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does CropAI compress or degrade the quality of my exported photos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CropAI prioritizes source fidelity. Our backend image processing uses high-performance Sharp rendering libraries to ensure that cropped areas maintain their native sensor resolution and color profiles. We avoid aggressive lossy compression artifacts so that your output remains razor-sharp for print, commercial marketplaces, and high-DPI displays."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to my uploaded images and how long are they stored?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your privacy is paramount. Images uploaded to CropAI are held in temporary server memory solely to carry out the crop and segmentation transformations you requested. All uploaded originals and processed output files are automatically and permanently purged within 1 hour by our automated cleanup cron system. We do not maintain persistent photo libraries or permanent cloud archives."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my uploaded photos ever sold or used to train artificial intelligence models?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. CropAI never sells, rents, licenses, or aggregates your personal photos. Your image data is transmitted securely via encrypted HTTPS to our vision AI provider strictly for real-time inference and boundary detection, and is never used to build public training corpora. You retain full ownership and copyright over your images at all times."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to install any desktop software or browser extensions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No installation is needed. CropAI operates entirely in your web browser, running smoothly on Google Chrome, Apple Safari, Mozilla Firefox, and Microsoft Edge across Windows, macOS, Linux, ChromeOS, iOS, and Android. You never need to install heavy desktop software, plugins, or third-party extensions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use images cropped with CropAI for commercial projects and e-commerce?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. As long as you possess the original rights or license to the photo you uploaded, you are completely free to utilize the resulting cropped or background-removed graphics for commercial purposes. This includes online storefronts like Amazon, Shopify, eBay, and Etsy, advertising banners, YouTube thumbnails, client deliverables, and physical print merchandise."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use CropAI on my smartphone or tablet browser?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CropAI is fully responsive and optimized for mobile touchscreens. You can snap a photo directly using your phone camera or select existing images from your mobile gallery, type your prompt using the virtual keyboard, preview the cutout, and save the transparent PNG right to your mobile camera roll."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does CropAI compare to tools like remove.bg, Canva, or Photoshop?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Unlike standard background removers that automatically isolate only the prominent foreground object without giving you a choice, CropAI empowers you to specify exactly which object to extract using natural language. This means you can easily pluck a background person from a group photo, extract a specific shoe from a fashion spread, or isolate a small secondary logo—all without tedious manual lassoing in Photoshop or expensive subscriptions like remove.bg."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .faq-page-wrapper {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: var(--sp-3xl) var(--sp-lg);
+      position: relative;
+      z-index: 1;
+    }
+    .faq-hero {
+      text-align: center;
+      margin-bottom: var(--sp-3xl);
+    }
+    .faq-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1.15;
+      margin-bottom: var(--sp-md);
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .faq-hero p {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto var(--sp-xl);
+      line-height: 1.75;
+    }
+    .faq-category {
+      margin-bottom: var(--sp-3xl);
+    }
+    .faq-category h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: var(--sp-lg);
+      padding-bottom: var(--sp-xs);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .faq-category h2 span.cat-icon {
+      font-size: 1.35rem;
+    }
+    .faq-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-md);
+    }
+    .faq-card {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+    }
+    .faq-card:hover {
+      border-color: rgba(124, 58, 237, 0.4);
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.08);
+    }
+    .faq-card summary {
+      padding: var(--sp-lg) var(--sp-xl);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--sp-md);
+      user-select: none;
+    }
+    .faq-card summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-card summary::after {
+      content: "＋";
+      font-size: 1.25rem;
+      color: var(--color-primary-light);
+      font-weight: 400;
+      transition: transform var(--trans-fast);
+      flex-shrink: 0;
+    }
+    .faq-card[open] summary::after {
+      content: "−";
+      transform: rotate(180deg);
+    }
+    .faq-content {
+      padding: 0 var(--sp-xl) var(--sp-xl);
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.8;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .faq-content p {
+      margin-top: var(--sp-md);
+      margin-bottom: 0;
+    }
+    .faq-content a {
+      color: var(--color-primary-light);
+      text-decoration: underline;
+    }
+    .faq-cta-banner {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--sp-2xl);
+      text-align: center;
+      margin-top: var(--sp-3xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .faq-cta-banner h2 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: var(--sp-sm);
+      letter-spacing: -0.03em;
+    }
+    .faq-cta-banner p {
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto var(--sp-xl);
+      line-height: 1.7;
+    }
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: var(--sp-xl);
+    }
+    .breadcrumbs a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      color: var(--color-primary-light);
+    }
+    @media (max-width: 640px) {
+      .faq-card summary {
+        padding: var(--sp-md) var(--sp-lg);
+        font-size: 0.98rem;
+      }
+      .faq-content {
+        padding: 0 var(--sp-lg) var(--sp-lg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lgfaq)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs><linearGradient id="lgfaq" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav>
+        <a href="/" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Home</a>
+        <a href="/crop-image-by-text" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Crop by Text</a>
+        <a href="/faq" style="color: var(--color-primary-light); font-size: 0.9rem; margin-right: 1.5rem;">FAQ</a>
+        <a href="/app" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Open Tool →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="faq-page-wrapper" role="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span aria-current="page">FAQ</span>
+    </nav>
+
+    <div class="faq-hero">
+      <h1>Frequently Asked Questions About CropAI Image Cropping</h1>
+      <p>Have questions about how prompt-based cropping works, privacy terms, supported resolutions, or background removal? Find in-depth explanations below.</p>
+      <a href="/app" class="btn btn-primary" style="font-size: 0.95rem; padding: 0.8rem 1.8rem;">
+        ✂️ Launch Free Cropper Now →
+      </a>
+    </div>
+
+    <!-- Category 1: General & Tool Capabilities -->
+    <section class="faq-category" aria-labelledby="cat-general">
+      <h2 id="cat-general"><span class="cat-icon">⚡</span> General & Tool Capabilities</h2>
+      <div class="faq-group">
+
+        <details class="faq-card" open>
+          <summary>What is CropAI and how does it work?</summary>
+          <div class="faq-content">
+            <p>CropAI is a specialized AI-powered image cropping and object extraction tool designed to eliminate manual masking. Instead of drawing clumsy marquee boxes or using complex lasso tools in desktop editing software, you simply upload an image and type what you want to extract in natural English, such as "the red sports car" or "the person in the middle". High-accuracy vision language models locate the object coordinates, and our graphics engine creates a precise bounding crop or extracts the subject onto a transparent background.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>Is CropAI completely free to use without sign-up or watermarks?</summary>
+          <div class="faq-content">
+            <p>Yes, CropAI is 100% free to use. There are no paywalls, no monthly subscription tiers, no credit card requirements, and no mandatory account registrations. Furthermore, CropAI never imprints watermarks onto your finished pictures. You can crop single images, test multiple text prompts, and download clean high-resolution files immediately with zero friction.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>How does CropAI crop images using text prompts?</summary>
+          <div class="faq-content">
+            <p>When you enter a prompt, CropAI transmits your image to advanced multimodal vision models that understand semantic object relationships and spatial context. The AI analyzes spatial positions, colors, relative sizes, and natural descriptors to locate the exact bounding boundaries of the requested subject. Once the AI calculates these precise coordinates, our server-side engine executes a clean, high-fidelity crop or segmentation pass.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Category 2: Smart Crop vs Background Removal -->
+    <section class="faq-category" aria-labelledby="cat-features">
+      <h2 id="cat-features"><span class="cat-icon">🪄</span> Smart Crop vs. Background Removal</h2>
+      <div class="faq-group">
+
+        <details class="faq-card">
+          <summary>What is the difference between Smart Crop and Remove Background in CropAI?</summary>
+          <div class="faq-content">
+            <p>Smart Crop produces a tight rectangular image focused strictly on your chosen subject, eliminating unnecessary negative space while retaining the subject's local surroundings. Remove Background goes one step further: it separates the subject from its surroundings at the pixel level, rendering everything else transparent and saving the cutout as a clean 32-bit PNG file. You can pick either mode with a single toggle before processing.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>Can CropAI detect and cut out multiple objects from the same photo?</summary>
+          <div class="faq-content">
+            <p>Yes. If your photo contains several items matching your prompt—for example, if you request "coffee mugs" in a picture showing four distinct cups—CropAI detects and isolates each one individually. The interactive preview highlights each detected subject with separate bounding boxes, allowing you to select individual objects or download the entire collection simultaneously inside a organized ZIP archive.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>How does the Adjust panel work for refining crops?</summary>
+          <div class="faq-content">
+            <p>If the initial crop needs a minor adjustment, you do not have to re-upload your image. The interactive Adjust panel allows you to enter natural follow-up instructions, such as "crop a bit wider", "include the ground shadow", "zoom closer to the face", or "remove the hand holding the mug". The vision AI reads your original photo alongside your modification prompt and immediately recalculates the optimal bounding box.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>Does CropAI work well with difficult subjects like hair, fur, and semi-transparent objects?</summary>
+          <div class="faq-content">
+            <p>Yes, CropAI is engineered to handle intricate contours and fine edge details. When using the transparent background removal mode, our neural segmentation algorithms trace subtle gradients, pet fur, flyaway strands of hair, and detailed silhouettes far more accurately than standard color-range thresholding tools, yielding professional cutouts ready for e-commerce or thumbnail collages.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Category 3: Formats, Quality & Performance -->
+    <section class="faq-category" aria-labelledby="cat-specs">
+      <h2 id="cat-specs"><span class="cat-icon">⚙️</span> Image Formats, Specs & Export Quality</h2>
+      <div class="faq-group">
+
+        <details class="faq-card">
+          <summary>What image formats and file size limits are supported by CropAI?</summary>
+          <div class="faq-content">
+            <p>CropAI accepts standard modern web image formats, specifically PNG, JPG (JPEG), and WEBP files. The maximum upload size per individual photo is 10 MB, which comfortably accommodates high-resolution camera captures, product photography, and smartphone photos. If an uploaded file exceeds this limit, an alert prompts you to optimize the file size before proceeding.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>In what file formats can I download my final cropped images?</summary>
+          <div class="faq-content">
+            <p>When using background removal mode, your image is automatically exported as a transparent PNG to preserve complete alpha channel transparency. For standard rectangular smart crops, you have the flexibility to download your result as either a high-quality PNG or an optimized JPG file depending on your workflow requirements.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>Does CropAI compress or degrade the quality of my exported photos?</summary>
+          <div class="faq-content">
+            <p>CropAI prioritizes source fidelity. Our backend image processing uses high-performance Sharp rendering libraries to ensure that cropped areas maintain their native sensor resolution and color profiles. We avoid aggressive lossy compression artifacts so that your output remains razor-sharp for print, commercial marketplaces, and high-DPI displays.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Category 4: Privacy, Data & Security -->
+    <section class="faq-category" aria-labelledby="cat-privacy">
+      <h2 id="cat-privacy"><span class="cat-icon">🔒</span> Privacy, Security & Data Handling</h2>
+      <div class="faq-group">
+
+        <details class="faq-card">
+          <summary>What happens to my uploaded images and how long are they stored?</summary>
+          <div class="faq-content">
+            <p>Your privacy is paramount. Images uploaded to CropAI are held in temporary server memory solely to carry out the crop and segmentation transformations you requested. All uploaded originals and processed output files are automatically and permanently purged within 1 hour by our automated cleanup cron system. We do not maintain persistent photo libraries or permanent cloud archives. Read our full <a href="/privacy">Privacy Policy</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>Are my uploaded photos ever sold or used to train artificial intelligence models?</summary>
+          <div class="faq-content">
+            <p>No. CropAI never sells, rents, licenses, or aggregates your personal photos. Your image data is transmitted securely via encrypted HTTPS to our vision AI provider strictly for real-time inference and boundary detection, and is never used to build public training corpora. You retain full ownership and copyright over your images at all times.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>Do I need to install any desktop software or browser extensions?</summary>
+          <div class="faq-content">
+            <p>No installation is needed. CropAI operates entirely in your web browser, running smoothly on Google Chrome, Apple Safari, Mozilla Firefox, and Microsoft Edge across Windows, macOS, Linux, ChromeOS, iOS, and Android. You never need to install heavy desktop software, plugins, or third-party extensions.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Category 5: Commercial Use & Comparisons -->
+    <section class="faq-category" aria-labelledby="cat-usage">
+      <h2 id="cat-usage"><span class="cat-icon">💼</span> Commercial Usage & Competitor Comparison</h2>
+      <div class="faq-group">
+
+        <details class="faq-card">
+          <summary>Can I use images cropped with CropAI for commercial projects and e-commerce?</summary>
+          <div class="faq-content">
+            <p>Yes. As long as you possess the original rights or license to the photo you uploaded, you are completely free to utilize the resulting cropped or background-removed graphics for commercial purposes. This includes online storefronts like Amazon, Shopify, eBay, and Etsy, advertising banners, YouTube thumbnails, client deliverables, and physical print merchandise.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>Can I use CropAI on my smartphone or tablet browser?</summary>
+          <div class="faq-content">
+            <p>Yes. CropAI is fully responsive and optimized for mobile touchscreens. You can snap a photo directly using your phone camera or select existing images from your mobile gallery, type your prompt using the virtual keyboard, preview the cutout, and save the transparent PNG right to your mobile camera roll.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>How does CropAI compare to tools like remove.bg, Canva, or Photoshop?</summary>
+          <div class="faq-content">
+            <p>Unlike standard background removers that automatically isolate only the prominent foreground object without giving you a choice, CropAI empowers you to specify exactly which object to extract using natural language. This means you can easily pluck a background person from a group photo, extract a specific shoe from a fashion spread, or isolate a small secondary logo—all without tedious manual lassoing in Photoshop or expensive subscriptions like remove.bg.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Final CTA Banner -->
+    <div class="faq-cta-banner">
+      <h2>Ready to try prompt-based cropping?</h2>
+      <p>Transform how you edit photos today. Upload an image, describe what you want, and let CropAI isolate it in seconds.</p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1rem; padding: 0.9rem 2.2rem;">
+        ✂️ Launch CropAI Free →
+      </a>
+      <p style="margin-top: var(--sp-md); font-size: 0.85rem; color: var(--text-muted);">
+        No account required · Instant transparent PNG export · Files deleted in 1 hour
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <nav aria-label="Footer navigation"
+      style="margin-bottom: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/faq">FAQ</a>
+      <a href="/crop-image-by-text">Crop by Text</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+      <a href="/app">Open Tool</a>
+    </nav>
+    <p>CropAI · Powered by OpenRouter Vision AI · Images auto-deleted after 1 hour</p>
+  </footer>
+</body>
+</html>

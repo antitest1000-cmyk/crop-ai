@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Thumbnail Cutout: AI Subject Isolator | CropAI</title>
+  <meta name="description" content="Create click-worthy YouTube thumbnail cutouts with AI. Extract people, faces, and objects with transparent backgrounds in seconds. Free, no watermark." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://cropai.app/youtube-thumbnail-cutout" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cropai.app/" },
+          { "@type": "ListItem", "position": 2, "name": "YouTube Thumbnail Cutout", "item": "https://cropai.app/youtube-thumbnail-cutout" }
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://cropai.app/youtube-thumbnail-cutout#app",
+        "name": "CropAI YouTube Thumbnail Cutout Tool",
+        "url": "https://cropai.app/youtube-thumbnail-cutout",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any (web browser)",
+        "description": "Extract YouTube thumbnail creators and subjects onto transparent PNGs.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://cropai.app/#org" }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .page-container { max-width: 940px; margin: 0 auto; padding: var(--sp-2xl) var(--sp-lg); position: relative; z-index: 1; }
+    .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--sp-xl); }
+    .breadcrumbs a { color: var(--text-secondary); text-decoration: none; }
+    .hero-section { text-align: center; margin-bottom: var(--sp-3xl); }
+    .hero-section h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.15; margin-bottom: var(--sp-md); background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-section .intro-lead { font-size: 1.15rem; color: var(--text-secondary); max-width: 680px; margin: 0 auto var(--sp-xl); line-height: 1.75; }
+    .hero-image-box { border-radius: var(--radius-2xl); overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2); margin: var(--sp-2xl) 0; }
+    .hero-image-box img { width: 100%; height: auto; display: block; }
+    .content-section { margin-bottom: var(--sp-3xl); }
+    .content-section h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: var(--sp-lg); }
+    .content-section p { color: var(--text-secondary); line-height: 1.8; font-size: 1rem; margin-bottom: var(--sp-md); }
+    .cta-banner { background: var(--color-surface); background-image: var(--gradient-surface); border: 1px solid var(--color-border); border-radius: var(--radius-2xl); padding: var(--sp-2xl); text-align: center; margin-top: var(--sp-3xl); }
+    .related-links { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; margin-top: var(--sp-xl); }
+    .related-links a { color: var(--color-primary-light); text-decoration: underline; font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lgyt)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs><linearGradient id="lgyt" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav>
+        <a href="/" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Home</a>
+        <a href="/crop-image-by-text" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Crop by Text</a>
+        <a href="/faq" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">FAQ</a>
+        <a href="/app" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Open Tool →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container" role="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span aria-current="page">YouTube Thumbnail Cutout</span>
+    </nav>
+
+    <section class="hero-section">
+      <h1>YouTube Thumbnail Cutout: Extract Any Subject</h1>
+      <p class="intro-lead">
+        Create high-CTR YouTube thumbnail cutouts in seconds. Crop creators, expressive faces, reaction poses, and highlighted objects with clean transparent edges ready for white borders and drop shadows.
+      </p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
+        🎬 Create Thumbnail Cutout Now →
+      </a>
+
+      <div class="hero-image-box">
+        <img src="/img/usecase-thumbnails.webp" width="600" height="400"
+          alt="A person extracted to be used in a YouTube thumbnail" />
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Why Top Creators Use AI for YouTube Thumbnails</h2>
+      <p>
+        Every YouTube viewer decides whether to click based on your thumbnail in less than 2 seconds. A high-contrast cutout of your subject or reaction face overlaid on vivid backgrounds drives click-through rate (CTR). With CropAI, you don't need expensive subscription tools or complex Photoshop masking.
+      </p>
+      <p>
+        Simply drop in your video frame capture or selfie photo, select Remove Background, and download a transparent PNG that drops directly into Photoshop, Canva, or Figma.
+      </p>
+    </section>
+
+    <section class="cta-banner">
+      <h2>Level up your thumbnail CTR</h2>
+      <p>Cut out reaction faces, hardware, and creators in one click. 100% free.</p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
+        ✂️ Make Thumbnail Cutouts Free →
+      </a>
+      <div class="related-links">
+        <a href="/">CropAI Home</a>
+        <a href="/background-remover">AI Background Remover</a>
+        <a href="/crop-image-by-text">Crop Image by Text</a>
+        <a href="/faq">FAQ</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <nav aria-label="Footer navigation" style="margin-bottom: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/faq">FAQ</a>
+      <a href="/crop-image-by-text">Crop by Text</a>
+      <a href="/background-remover">Background Remover</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/app">Open Tool</a>
+    </nav>
+    <p>CropAI · Free AI YouTube thumbnail cutout generator</p>
+  </footer>
+</body>
+</html>

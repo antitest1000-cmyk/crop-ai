@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About CropAI – AI-Powered Image Cropping Tool</title>
+  <meta name="description" content="CropAI is a free, privacy-first AI image extraction tool. Upload any image, describe what you want, and the AI finds and extracts it — no account required." />
+  <link rel="canonical" href="https://cropai.app/about" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .about-page { max-width: 860px; margin: 0 auto; padding: var(--sp-3xl) var(--sp-xl); position: relative; z-index: 1; }
+    .about-page h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -0.05em; margin-bottom: var(--sp-md); background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; }
+    .about-page .lead { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--sp-2xl); max-width: 640px; }
+    .about-page h2 { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin: var(--sp-2xl) 0 var(--sp-md); letter-spacing: -0.03em; }
+    .about-page p, .about-page li { color: var(--text-secondary); line-height: 1.85; font-size: 0.97rem; margin-bottom: var(--sp-md); }
+    .about-page ul { padding-left: 1.5rem; margin-bottom: var(--sp-md); }
+    .about-page li { margin-bottom: 8px; }
+    .about-page strong { color: var(--text-primary); font-weight: 600; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--sp-lg); margin-bottom: var(--sp-2xl); }
+    .feature-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--sp-lg); background-image: var(--gradient-surface); }
+    .feature-card .icon { font-size: 2rem; margin-bottom: var(--sp-sm); }
+    .feature-card h3 { font-size: 1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 6px; }
+    .feature-card p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.6; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.9rem; font-weight: 600; margin-bottom: var(--sp-xl); transition: color var(--trans-fast); }
+    .back-link:hover { color: var(--color-primary-light); text-decoration: none; }
+    .cta-block { background: var(--color-surface); background-image: var(--gradient-surface); border: 1px solid var(--color-border); border-radius: var(--radius-2xl); padding: var(--sp-2xl); text-align: center; margin-top: var(--sp-2xl); }
+    .cta-block h2 { margin-top: 0; }
+    @media (max-width: 600px) { .about-page { padding: var(--sp-xl) var(--sp-md); } }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CropAI",
+    "applicationCategory": "PhotographyApplication",
+    "operatingSystem": "Web",
+    "description": "AI-powered image cropping and object extraction tool. Describe what you want to crop in plain English and the AI finds and extracts it.",
+    "url": "https://cropai.app",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": ["Smart Crop", "Background Removal", "Batch Extract", "Natural Language Prompts", "Transparent PNG Export"]
+  }
+  </script>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lg3)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs><linearGradient id="lg3" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav>
+        <a href="/about" style="color: var(--color-primary-light); font-size: 0.9rem; margin-right: 1.5rem;">About</a>
+        <a href="/privacy" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Privacy</a>
+        <a href="/terms" style="color: var(--text-secondary); font-size: 0.9rem;">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="about-page" role="main">
+    <a href="/" class="back-link">← Back to CropAI</a>
+
+    <h1>AI that knows exactly<br/>what to cut.</h1>
+    <p class="lead">CropAI lets you extract any object from any image using plain English. No Photoshop, no selection tools, no manual masking — just describe what you want and the AI handles the rest.</p>
+
+    <h2>What CropAI Does</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">✂️</div>
+        <h3>Smart Crop</h3>
+        <p>Describe the object you want and CropAI returns a perfectly tight bounding-box crop — no wasted background, no manual selection.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🪄</div>
+        <h3>Background Removal</h3>
+        <p>Enable "Remove Background" to get a transparent PNG with the subject extracted at the pixel level using AI segmentation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📦</div>
+        <h3>Batch Extract</h3>
+        <p>When your image has multiple matching objects, CropAI identifies them all. Select which ones you want and batch-extract them in one click.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🎯</div>
+        <h3>Refine with AI</h3>
+        <p>Not happy with the first result? Use the Adjust panel to give the AI a follow-up instruction: "include the shadow" or "crop tighter".</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">💬</div>
+        <h3>Natural Language</h3>
+        <p>No checkboxes or sliders. Just describe what you need: "the woman with the red umbrella" or "extract the logo from the top right".</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>Privacy First</h3>
+        <p>No account required. All uploaded images are automatically and permanently deleted from our servers within 1 hour of upload.</p>
+      </div>
+    </div>
+
+    <h2>Who It's For</h2>
+    <ul>
+      <li><strong>E-commerce sellers</strong> — clean product photos on white/transparent backgrounds in seconds.</li>
+      <li><strong>Content creators</strong> — extract subjects for thumbnails, social media cutouts, and overlays.</li>
+      <li><strong>Designers</strong> — pull design assets out of reference images without Photoshop.</li>
+      <li><strong>Developers</strong> — use the API for automated image preprocessing pipelines.</li>
+      <li><strong>Anyone</strong> who has ever opened Photoshop just to cut something out.</li>
+    </ul>
+
+    <h2>How It Works</h2>
+    <p>CropAI is powered by state-of-the-art vision AI models (Google Gemini, Claude, GPT-4o) accessed via OpenRouter. When you submit an image and prompt:</p>
+    <ul>
+      <li>The vision model analyzes your image and returns precise pixel coordinates for the object you described.</li>
+      <li>Our server uses <strong>Sharp</strong> (high-performance Node.js image processing) to crop the image to those coordinates.</li>
+      <li>If background removal is enabled, a Python script using <strong>rembg</strong> and OpenCV performs pixel-level segmentation and edge cleanup.</li>
+      <li>The result is returned to you instantly, then deleted from our server within 1 hour.</li>
+    </ul>
+
+    <h2>Tech Stack</h2>
+    <ul>
+      <li><strong>Frontend:</strong> Vanilla HTML, CSS (Glassmorphism UI), JavaScript</li>
+      <li><strong>Backend:</strong> Node.js + Express</li>
+      <li><strong>Image processing:</strong> Sharp (Node.js) + rembg + OpenCV (Python)</li>
+      <li><strong>AI:</strong> OpenRouter → Google Gemini / Claude / GPT-4o</li>
+    </ul>
+
+    <div class="cta-block">
+      <h2>Ready to try it?</h2>
+      <p>No account, no signup. Just upload an image and describe what you want.</p>
+      <a href="/" class="btn btn-primary" style="display: inline-flex; margin-top: var(--sp-md);">✂️ Try CropAI Free</a>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>CropAI · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · Images auto-deleted after 1 hour</p>
+  </footer>
+</body>
+</html>

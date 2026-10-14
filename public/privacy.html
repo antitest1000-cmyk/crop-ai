@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | CropAI</title>
+  <meta name="description" content="CropAI Privacy Policy. Learn how we handle your uploaded images, prompts, and personal data. Images are automatically deleted after 1 hour." />
+  <link rel="canonical" href="https://cropai.app/privacy" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .legal-page { max-width: 760px; margin: 0 auto; padding: var(--sp-3xl) var(--sp-xl); position: relative; z-index: 1; }
+    .legal-page h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: var(--sp-sm); background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .legal-page .last-updated { color: var(--text-muted); font-size: 0.85rem; margin-bottom: var(--sp-2xl); font-family: var(--font-mono); }
+    .legal-page h2 { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin: var(--sp-2xl) 0 var(--sp-md); letter-spacing: -0.02em; }
+    .legal-page p, .legal-page li { color: var(--text-secondary); line-height: 1.85; font-size: 0.97rem; margin-bottom: var(--sp-md); }
+    .legal-page ul { padding-left: 1.5rem; margin-bottom: var(--sp-md); }
+    .legal-page li { margin-bottom: 6px; }
+    .legal-page strong { color: var(--text-primary); font-weight: 600; }
+    .legal-page a { color: var(--color-primary-light); }
+    .highlight-box { background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.25); border-radius: var(--radius-lg); padding: var(--sp-lg); margin-bottom: var(--sp-xl); }
+    .highlight-box p { margin-bottom: 0; color: var(--text-primary); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.9rem; font-weight: 600; margin-bottom: var(--sp-xl); transition: color var(--trans-fast); }
+    .back-link:hover { color: var(--color-primary-light); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lg)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs><linearGradient id="lg" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav>
+        <a href="/about" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">About</a>
+        <a href="/privacy" style="color: var(--color-primary-light); font-size: 0.9rem; margin-right: 1.5rem;">Privacy</a>
+        <a href="/terms" style="color: var(--text-secondary); font-size: 0.9rem;">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="legal-page" role="main">
+    <a href="/" class="back-link">← Back to CropAI</a>
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: October 2026</p>
+
+    <div class="highlight-box">
+      <p>🔒 <strong>Short version:</strong> You upload an image, we process it with AI, return the result, and automatically delete everything from our server within 1 hour. We do not sell your data, we do not train AI models on your images, and we do not require an account.</p>
+    </div>
+
+    <h2>1. What We Collect</h2>
+    <p>When you use CropAI, we collect only what is necessary to provide the service:</p>
+    <ul>
+      <li><strong>Uploaded images:</strong> Stored temporarily on our server to process your request. Automatically deleted after 1 hour.</li>
+      <li><strong>Text prompts:</strong> The descriptions you type (e.g., "extract the red car"). Sent to the AI provider to analyze your image. Not stored permanently on our servers.</li>
+      <li><strong>Server logs:</strong> Standard web server logs including IP address, request timestamps, and HTTP status codes. Retained for up to 30 days for security and debugging.</li>
+    </ul>
+
+    <h2>2. Third-Party AI Processing</h2>
+    <p><strong>Important disclosure:</strong> To analyze your images, CropAI sends your image and your text prompt to <a href="https://openrouter.ai" target="_blank" rel="noopener">OpenRouter</a>, a third-party AI routing service, which in turn forwards the request to the underlying vision model (such as Google Gemini, Claude, or GPT-4o).</p>
+    <p>This means:</p>
+    <ul>
+      <li>Your image and prompt are transmitted to OpenRouter's servers and the model provider's servers.</li>
+      <li>We use the <strong>free Gemini tier by default</strong>. Free-tier models may log or use requests per the model provider's own policies. We strongly recommend reviewing <a href="https://openrouter.ai/privacy" target="_blank" rel="noopener">OpenRouter's Privacy Policy</a> and Google's AI data usage terms if this concerns you.</li>
+      <li>If you need guaranteed privacy, consider upgrading to a paid model tier via your own API key.</li>
+    </ul>
+
+    <h2>3. How We Use Your Data</h2>
+    <ul>
+      <li>To process your image and return a cropped or extracted result.</li>
+      <li>To monitor server health and debug errors.</li>
+      <li>We do <strong>not</strong> use your images to train our own AI models.</li>
+      <li>We do <strong>not</strong> sell, rent, or share your data with advertisers.</li>
+    </ul>
+
+    <h2>4. Data Retention</h2>
+    <ul>
+      <li><strong>Uploaded images:</strong> Deleted automatically after 1 hour.</li>
+      <li><strong>Result images:</strong> Deleted automatically after 1 hour.</li>
+      <li><strong>Server logs:</strong> Retained up to 30 days, then purged.</li>
+      <li><strong>No account data:</strong> We don't require accounts, so no profile data is stored.</li>
+    </ul>
+
+    <h2>5. Cookies and Analytics</h2>
+    <p>CropAI currently does not use tracking cookies or analytics services. If this changes, we will update this policy and, where required by law, obtain your consent first.</p>
+
+    <h2>6. Children's Privacy</h2>
+    <p>CropAI is not directed at children under 13 years of age (or 16 in EU countries). We do not knowingly collect data from children. If you believe a child has submitted data, please contact us and we will delete it immediately.</p>
+
+    <h2>7. Your Rights (GDPR / CCPA)</h2>
+    <p>Depending on where you live, you may have the right to:</p>
+    <ul>
+      <li>Request access to any personal data we hold about you.</li>
+      <li>Request deletion of your data.</li>
+      <li>Opt out of data sales (we don't sell data, but you may still exercise this right).</li>
+    </ul>
+    <p>To exercise these rights, contact us at <a href="mailto:privacy@cropai.app">privacy@cropai.app</a>. Since we store almost no persistent data and auto-delete images, most requests will be fulfilled immediately.</p>
+
+    <h2>8. Security</h2>
+    <ul>
+      <li>API keys are stored server-side and never exposed to your browser.</li>
+      <li>Uploaded images are stored with random UUID filenames, never publicly guessable.</li>
+      <li>The <code>/uploads</code> and <code>/api</code> paths are not publicly indexable.</li>
+      <li>HTTPS is enforced in production.</li>
+    </ul>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>If we make material changes to this policy, we will update the "Last updated" date at the top. Continued use of CropAI after a policy change constitutes acceptance of the new policy.</p>
+
+    <h2>10. Contact</h2>
+    <p>Questions about this policy? Email us at <a href="mailto:privacy@cropai.app">privacy@cropai.app</a>.</p>
+    <p style="margin-top: var(--sp-2xl); color: var(--text-muted); font-size: 0.8rem; font-style: italic;">Note: This privacy policy was written in good faith but has not been reviewed by a lawyer. For GDPR/CCPA compliance, consider having a qualified legal professional review it.</p>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>CropAI · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · Images auto-deleted after 1 hour</p>
+  </footer>
+</body>
+</html>

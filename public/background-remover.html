@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free AI Background Remover (Transparent PNG) | CropAI</title>
+  <meta name="description" content="Free AI background remover. Remove backgrounds from images instantly to download crisp transparent PNGs. No sign-up, no watermarks, 100% automated." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://cropai.app/background-remover" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="/img/feature-bg-remover.webp" fetchpriority="high" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="CropAI" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://cropai.app/background-remover" />
+  <meta property="og:title" content="Free AI Background Remover (Transparent PNG) | CropAI" />
+  <meta property="og:description" content="Erase photo backgrounds in one click. High-accuracy neural edge detection for hair, products, and graphic cutouts. Free transparent PNG export." />
+  <meta property="og:image" content="https://cropai.app/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free AI Background Remover | CropAI" />
+  <meta name="twitter:description" content="Remove backgrounds online for free. Clean transparent cutouts for e-commerce, logos, and portraits." />
+  <meta name="twitter:image" content="https://cropai.app/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cropai.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Background Remover",
+            "item": "https://cropai.app/background-remover"
+          }
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://cropai.app/background-remover#app",
+        "name": "CropAI Free AI Background Remover",
+        "url": "https://cropai.app/background-remover",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any (web browser)",
+        "description": "Remove image backgrounds automatically with AI segmentation and export transparent PNGs.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://cropai.app/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cropai.app/background-remover#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does CropAI remove backgrounds from photos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CropAI uses high-precision AI vision segmentation to differentiate between subject pixels and environmental background pixels. Unlike primitive color threshold tools, our neural engine understands depth, edge contours, shadows, and fine details like strands of hair or complex textures to deliver an edge-accurate cutout."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there any watermark on the exported transparent PNG?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, CropAI will never place watermarks on your downloaded images. You get clean, high-resolution transparent PNG files ready for professional and commercial use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I remove the background from a specific person in a group?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. While standard background removers blindly cut out whoever is closest to the lens, CropAI allows you to describe which person or object you want to extract using text prompts, isolating only your selected subject."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What image file types can I upload to remove backgrounds?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CropAI accepts standard JPG, PNG, and WEBP image formats up to 10 MB in file size. Cutouts are returned as transparent 32-bit PNGs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my images deleted after background removal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All uploaded source images and generated output files are automatically deleted from CropAI's servers within 1 hour. We respect your complete data privacy."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .page-container {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: var(--sp-2xl) var(--sp-lg);
+      position: relative;
+      z-index: 1;
+    }
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: var(--sp-xl);
+    }
+    .breadcrumbs a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      color: var(--color-primary-light);
+    }
+    .hero-section {
+      text-align: center;
+      margin-bottom: var(--sp-3xl);
+    }
+    .hero-section h1 {
+      font-size: clamp(2rem, 4.8vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: var(--sp-md);
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-section .intro-lead {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto var(--sp-xl);
+      line-height: 1.75;
+    }
+    .hero-image-box {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+      margin: var(--sp-2xl) 0;
+    }
+    .hero-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .content-section {
+      margin-bottom: var(--sp-3xl);
+    }
+    .content-section h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: var(--sp-lg);
+    }
+    .content-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: var(--sp-md);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--sp-lg);
+      margin: var(--sp-xl) 0;
+    }
+    .step-card {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
+      position: relative;
+    }
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--sp-md);
+    }
+    .step-card h3 {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--sp-lg);
+      margin: var(--sp-xl) 0;
+    }
+    .benefit-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-lg);
+    }
+    .benefit-icon {
+      font-size: 1.8rem;
+      margin-bottom: var(--sp-sm);
+    }
+    .benefit-item h3 {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .faq-list-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--sp-md);
+      overflow: hidden;
+    }
+    .faq-list-item summary {
+      padding: var(--sp-lg) var(--sp-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-list-item summary::after {
+      content: "＋";
+      font-size: 1.2rem;
+      color: var(--color-primary-light);
+    }
+    .faq-list-item[open] summary::after {
+      content: "−";
+    }
+    .faq-ans {
+      padding: 0 var(--sp-xl) var(--sp-lg);
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .cta-banner {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--sp-2xl);
+      text-align: center;
+      margin-top: var(--sp-3xl);
+    }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-md);
+      justify-content: center;
+      margin-top: var(--sp-xl);
+    }
+    .related-links a {
+      color: var(--color-primary-light);
+      text-decoration: underline;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lgbg)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs><linearGradient id="lgbg" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav>
+        <a href="/" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Home</a>
+        <a href="/crop-image-by-text" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Crop by Text</a>
+        <a href="/faq" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">FAQ</a>
+        <a href="/app" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Open Tool →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container" role="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span aria-current="page">AI Background Remover</span>
+    </nav>
+
+    <!-- 1. H1 + 2-sentence intro + CTA button -->
+    <section class="hero-section">
+      <h1>Free AI Background Remover (Transparent PNG)</h1>
+      <p class="intro-lead">
+        Remove backgrounds from photos automatically with CropAI's free ai background remover. Extract your subject with pixel-sharp boundary detection and download high-resolution transparent PNG cutouts in seconds.
+      </p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
+        🪄 Remove Background Free →
+      </a>
+
+      <!-- 2. Before/After image -->
+      <div class="hero-image-box">
+        <img src="/img/feature-bg-remover.webp" width="800" height="600"
+          alt="AI background remover cutout on transparent checkerboard pattern" />
+      </div>
+    </section>
+
+    <!-- 3. How it works in 3 steps -->
+    <section class="content-section" aria-labelledby="bg-how-it-works">
+      <h2 id="bg-how-it-works">How to Remove Backgrounds with AI in 3 Simple Steps</h2>
+      <p>
+        Creating transparent cutouts no longer requires complicated lasso selections, pen tools, or layer masks in Photoshop. Here is how easy it is:
+      </p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Upload Any Photo</h3>
+          <p>Drop your JPG, PNG, or WEBP image into the uploader. High-resolution captures up to 10 MB are supported.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Select Subject or Mode</h3>
+          <p>Check the "Remove Background" toggle. You can also specify which subject to isolate if there are multiple objects.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Export Transparent PNG</h3>
+          <p>The AI cuts out the subject with smooth alpha transparency. Download your transparent PNG instantly with no watermark.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Why use CropAI for this -->
+    <section class="content-section" aria-labelledby="bg-why-cropai">
+      <h2 id="bg-why-cropai">Why Choose CropAI as Your AI Background Remover</h2>
+      <p>
+        Most online background removers lock high-resolution downloads behind expensive monthly credits or slap unsightly watermarks across your cutouts. CropAI is built differently:
+      </p>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon">✨</div>
+          <h3>True Full Resolution</h3>
+          <p>Download images at their native pixel dimensions without forced downscaling or artificial resolution caps.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🎯</div>
+          <h3>Targeted Isolation</h3>
+          <p>Describe which object to cut out when photos have multiple items. Don't let dumb algorithms guess the wrong subject.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">💳</div>
+          <h3>100% Free Forever</h3>
+          <p>No credit card, no sign-up forms, and no annoying limits on your creative flow.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🛡️</div>
+          <h3>Strict Privacy Guarantee</h3>
+          <p>Your photos are processed in encrypted temporary storage and permanently purged within 1 hour.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Examples & Tips -->
+    <section class="content-section" aria-labelledby="bg-tips-title">
+      <h2 id="bg-tips-title">Best Practices for Clean Transparent PNG Cutouts</h2>
+      <p>
+        To ensure optimal edge precision and flawless alpha feathering when removing backgrounds, keep these practical tips in mind:
+      </p>
+      <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem; margin-bottom: var(--sp-lg);">
+        <li><strong>Ensure visible edge contrast:</strong> High contrast between your subject and the backdrop yields the most accurate neural edge detection.</li>
+        <li><strong>Use descriptive hints for complex scenes:</strong> If the subject shares colors with surrounding objects, add a brief note like "the speaker on the wooden desk".</li>
+        <li><strong>Leverage the Adjust panel:</strong> If fine flyaway hair or drop shadows need adjustment, provide a quick refinement prompt without re-uploading.</li>
+        <li><strong>Download as transparent PNG:</strong> For compositing over new backgrounds in Figma, Canva, or Photoshop, always save as PNG to retain the alpha channel.</li>
+      </ul>
+    </section>
+
+    <!-- 6. FAQ Block -->
+    <section class="content-section" aria-labelledby="bg-faq-title">
+      <h2 id="bg-faq-title">Frequently Asked Questions About AI Background Removal</h2>
+      <div class="faq-list">
+        <details class="faq-list-item" open>
+          <summary>How does CropAI remove backgrounds from photos?</summary>
+          <div class="faq-ans">
+            <p>CropAI uses high-precision AI vision segmentation to differentiate between subject pixels and environmental background pixels. Unlike primitive color threshold tools, our neural engine understands depth, edge contours, shadows, and fine details like strands of hair or complex textures to deliver an edge-accurate cutout.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Is there any watermark on the exported transparent PNG?</summary>
+          <div class="faq-ans">
+            <p>No, CropAI will never place watermarks on your downloaded images. You get clean, high-resolution transparent PNG files ready for professional and commercial use.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Can I remove the background from a specific person in a group?</summary>
+          <div class="faq-ans">
+            <p>Yes. While standard background removers blindly cut out whoever is closest to the lens, CropAI allows you to describe which person or object you want to extract using text prompts, isolating only your selected subject.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>What image file types can I upload to remove backgrounds?</summary>
+          <div class="faq-ans">
+            <p>CropAI accepts standard JPG, PNG, and WEBP image formats up to 10 MB in file size. Cutouts are returned as transparent 32-bit PNGs.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Are my images deleted after background removal?</summary>
+          <div class="faq-ans">
+            <p>Yes. All uploaded source images and generated output files are automatically deleted from CropAI's servers within 1 hour. We respect your complete data privacy.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 7. Closing CTA + Internal links -->
+    <section class="cta-banner">
+      <h2>Ready to remove photo backgrounds with AI?</h2>
+      <p>Clean, crisp, transparent PNGs are only a click away. No registration required.</p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
+        🪄 Start Removing Backgrounds Now →
+      </a>
+      <div class="related-links">
+        <a href="/">CropAI Home</a>
+        <a href="/crop-image-by-text">Crop Image by Text</a>
+        <a href="/product-photo-background-remover">Product Photo Remover</a>
+        <a href="/faq">CropAI FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <nav aria-label="Footer navigation"
+      style="margin-bottom: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/faq">FAQ</a>
+      <a href="/crop-image-by-text">Crop by Text</a>
+      <a href="/background-remover">Background Remover</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+      <a href="/app">Open Tool</a>
+    </nav>
+    <p>CropAI · Free AI image cropper & transparent background remover</p>
+  </footer>
+</body>
+</html>

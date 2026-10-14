@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Photo Background Remover: Amazon, Shopify & Etsy | CropAI</title>
+  <meta name="description" content="AI product photo background remover. Create pure white or transparent PNG product photos for Amazon, Shopify, Etsy, and eBay. 100% free with no watermark." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://cropai.app/product-photo-background-remover" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="CropAI" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://cropai.app/product-photo-background-remover" />
+  <meta property="og:title" content="Product Photo Background Remover for E-commerce | CropAI" />
+  <meta property="og:description" content="Remove busy backgrounds from product photography. Meets Amazon pure white (RGB 255,255,255) and Shopify transparent PNG requirements instantly." />
+  <meta property="og:image" content="https://cropai.app/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Product Photo Background Remover | CropAI" />
+  <meta name="twitter:description" content="Free AI background remover for Amazon, eBay, Shopify, and Etsy sellers." />
+  <meta name="twitter:image" content="https://cropai.app/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cropai.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Product Photo Background Remover",
+            "item": "https://cropai.app/product-photo-background-remover"
+          }
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://cropai.app/product-photo-background-remover#app",
+        "name": "CropAI Product Photo Background Remover",
+        "url": "https://cropai.app/product-photo-background-remover",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any (web browser)",
+        "description": "Remove background from product photos online for free. Compliant with Amazon, Shopify, and Etsy standards.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://cropai.app/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cropai.app/product-photo-background-remover#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does CropAI meet Amazon's main image requirement?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Amazon requires main listing images to display products on a pure, seamless white background (RGB 255, 255, 255) with no distracting props. CropAI extracts your product into a clean transparent PNG, allowing you to easily place it on pure white."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I remove backgrounds from multiple product shots in a batch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. If your photo contains multiple products or packaging variants, CropAI detects each item, lets you select which to extract, and provides an option to download all cutouts together as a ZIP."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will removing the background lower my product image resolution?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. CropAI retains native pixel dimensions without aggressive compression so that your images comfortably meet marketplace minimums (such as Amazon's 1000px zoom requirement)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is CropAI free for commercial e-commerce sellers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, CropAI is completely free with no usage fees, subscription locks, or licensing restrictions on commercial e-commerce listings."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .page-container {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: var(--sp-2xl) var(--sp-lg);
+      position: relative;
+      z-index: 1;
+    }
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: var(--sp-xl);
+    }
+    .breadcrumbs a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .hero-section {
+      text-align: center;
+      margin-bottom: var(--sp-3xl);
+    }
+    .hero-section h1 {
+      font-size: clamp(2rem, 4.5vw, 3.1rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: var(--sp-md);
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-section .intro-lead {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto var(--sp-xl);
+      line-height: 1.75;
+    }
+    .hero-image-box {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+      margin: var(--sp-2xl) 0;
+    }
+    .hero-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .content-section {
+      margin-bottom: var(--sp-3xl);
+    }
+    .content-section h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: var(--sp-lg);
+    }
+    .content-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: var(--sp-md);
+    }
+    .table-container {
+      overflow-x: auto;
+      margin: var(--sp-xl) 0;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+    }
+    .req-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .req-table th, .req-table td {
+      padding: var(--sp-md) var(--sp-lg);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .req-table th {
+      background: var(--color-surface-2);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .req-table td {
+      color: var(--text-secondary);
+    }
+    .faq-list-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--sp-md);
+      overflow: hidden;
+    }
+    .faq-list-item summary {
+      padding: var(--sp-lg) var(--sp-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-list-item summary::after {
+      content: "＋";
+      font-size: 1.2rem;
+      color: var(--color-primary-light);
+    }
+    .faq-list-item[open] summary::after {
+      content: "−";
+    }
+    .faq-ans {
+      padding: 0 var(--sp-xl) var(--sp-lg);
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .cta-banner {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--sp-2xl);
+      text-align: center;
+      margin-top: var(--sp-3xl);
+    }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-md);
+      justify-content: center;
+      margin-top: var(--sp-xl);
+    }
+    .related-links a {
+      color: var(--color-primary-light);
+      text-decoration: underline;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lgprod)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs><linearGradient id="lgprod" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav>
+        <a href="/" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Home</a>
+        <a href="/crop-image-by-text" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Crop by Text</a>
+        <a href="/faq" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">FAQ</a>
+        <a href="/app" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Open Tool →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container" role="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span aria-current="page">Product Photo Background Remover</span>
+    </nav>
+
+    <section class="hero-section">
+      <h1>Product Photo Background Remover for E-Commerce</h1>
+      <p class="intro-lead">
+        Boost your storefront conversion rates with CropAI's automated product photo background remover. Turn messy snapshot backgrounds into studio-clean transparent PNGs or pure white backdrops in seconds.
+      </p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
+        🛍️ Clean Your Product Photos Free →
+      </a>
+
+      <div class="hero-image-box">
+        <img src="/img/usecase-ecommerce.webp" width="600" height="400"
+          alt="Product photo isolated on a clean background" />
+      </div>
+    </section>
+
+    <!-- Marketplace Requirements Guide -->
+    <section class="content-section" aria-labelledby="marketplace-standards">
+      <h2 id="marketplace-standards">Marketplace Standards: Amazon, Shopify, Etsy & eBay</h2>
+      <p>
+        Leading e-commerce platforms maintain strict image guidelines. Non-compliant photos hurt search discoverability, look unprofessional, or risk listing suppression. CropAI helps you comply effortlessly:
+      </p>
+
+      <div class="table-container">
+        <table class="req-table">
+          <thead>
+            <tr>
+              <th>Marketplace</th>
+              <th>Background Rule</th>
+              <th>Recommended Size</th>
+              <th>Format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Amazon</strong></td>
+              <td>Pure seamless white (RGB 255, 255, 255) for main image</td>
+              <td>1600px+ longest side (for zoom)</td>
+              <td>JPEG, PNG</td>
+            </tr>
+            <tr>
+              <td><strong>Shopify</strong></td>
+              <td>Clean white or transparent PNG recommended</td>
+              <td>2048 x 2048 px square</td>
+              <td>PNG, WEBP, JPEG</td>
+            </tr>
+            <tr>
+              <td><strong>Etsy</strong></td>
+              <td>Neutral light gray or white backdrop</td>
+              <td>2000px minimum width</td>
+              <td>JPEG, PNG</td>
+            </tr>
+            <tr>
+              <td><strong>eBay</strong></td>
+              <td>Solid white or off-white background</td>
+              <td>1600px+ longest side</td>
+              <td>JPEG, PNG</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- How to use -->
+    <section class="content-section" aria-labelledby="how-to-ecommerce">
+      <h2 id="how-to-ecommerce">How to Prepare Product Listings in 3 Steps</h2>
+      <p>
+        Whether shooting apparel, electronics, jewelry, or handcrafted goods, here is the fastest workflow:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--sp-lg); margin: var(--sp-xl) 0;">
+        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--sp-xl);">
+          <div style="font-size: 1.8rem; margin-bottom: 8px;">📸</div>
+          <h3 style="color: var(--text-primary); margin-bottom: 6px;">1. Upload Product Shot</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">Upload high-res photos taken with your phone or camera under standard room lighting.</p>
+        </div>
+        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--sp-xl);">
+          <div style="font-size: 1.8rem; margin-bottom: 8px;">🪄</div>
+          <h3 style="color: var(--text-primary); margin-bottom: 6px;">2. AI Background Removal</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">CropAI isolates product edges, clears away cluttered backgrounds, and preserves natural drop shadows.</p>
+        </div>
+        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--sp-xl);">
+          <div style="font-size: 1.8rem; margin-bottom: 8px;">🚀</div>
+          <h3 style="color: var(--text-primary); margin-bottom: 6px;">3. Export & List</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">Download your transparent PNG cutout and upload it directly to your online storefront.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content-section" aria-labelledby="prod-faq">
+      <h2 id="prod-faq">Frequently Asked Questions for E-Commerce Sellers</h2>
+      <div class="faq-list">
+        <details class="faq-list-item" open>
+          <summary>Does CropAI meet Amazon's main image requirement?</summary>
+          <div class="faq-ans">
+            <p>Yes. Amazon requires main listing images to display products on a pure, seamless white background (RGB 255, 255, 255) with no distracting props. CropAI extracts your product into a clean transparent PNG, allowing you to easily place it on pure white.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Can I remove backgrounds from multiple product shots in a batch?</summary>
+          <div class="faq-ans">
+            <p>Yes. If your photo contains multiple products or packaging variants, CropAI detects each item, lets you select which to extract, and provides an option to download all cutouts together as a ZIP.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Will removing the background lower my product image resolution?</summary>
+          <div class="faq-ans">
+            <p>No. CropAI retains native pixel dimensions without aggressive compression so that your images comfortably meet marketplace minimums (such as Amazon's 1000px zoom requirement).</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Is CropAI free for commercial e-commerce sellers?</summary>
+          <div class="faq-ans">
+            <p>Yes, CropAI is completely free with no usage fees, subscription locks, or licensing restrictions on commercial e-commerce listings.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <h2>Transform your product photos today</h2>
+      <p>Clean images sell more products. Cut out your catalog with CropAI for free.</p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
+        ✂️ Launch Product Photo Cropper →
+      </a>
+      <div class="related-links">
+        <a href="/">Home</a>
+        <a href="/background-remover">AI Background Remover</a>
+        <a href="/crop-image-by-text">Crop Image by Text</a>
+        <a href="/faq">Full FAQ</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <nav aria-label="Footer navigation"
+      style="margin-bottom: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/faq">FAQ</a>
+      <a href="/crop-image-by-text">Crop by Text</a>
+      <a href="/background-remover">Background Remover</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+      <a href="/app">Open Tool</a>
+    </nav>
+    <p>CropAI · E-Commerce product photo background removal</p>
+  </footer>
+</body>
+</html>

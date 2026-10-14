@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /uploads/
+Disallow: /outputs/
+# Tool page — content handled by landing page; noindex tag also set in HTML
+Disallow: /app
+
+Sitemap: https://cropai.app/sitemap.xml

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found (404) | CropAI</title>
+  <meta name="description" content="Sorry, the page you're looking for doesn't exist. Return to CropAI or launch our free AI image cropping tool." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .error-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: var(--sp-3xl) var(--sp-lg);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: calc(100vh - 180px);
+      justify-content: center;
+    }
+    .error-badge {
+      font-size: clamp(4.5rem, 12vw, 8rem);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--sp-xs);
+    }
+    .error-title {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: var(--sp-md);
+    }
+    .error-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: var(--sp-2xl);
+    }
+    .actions-group {
+      display: flex;
+      gap: var(--sp-md);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: var(--sp-2xl);
+    }
+    .helpful-links {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
+      width: 100%;
+      max-width: 520px;
+      text-align: left;
+    }
+    .helpful-links h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--sp-md);
+    }
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-sm);
+    }
+    .links-grid a {
+      color: var(--color-primary-light);
+      text-decoration: none;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 0;
+      transition: color var(--trans-fast);
+    }
+    .links-grid a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lg404)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs><linearGradient id="lg404" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav>
+        <a href="/" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Home</a>
+        <a href="/faq" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">FAQ</a>
+        <a href="/app" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Open Tool →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="error-container" role="main">
+    <div class="error-badge">404</div>
+    <h1 class="error-title">Page not found</h1>
+    <p class="error-desc">The page you were looking for doesn't exist, has been removed, or was moved to another URL.</p>
+
+    <div class="actions-group">
+      <a href="/app" class="btn btn-primary" style="padding: 0.8rem 1.8rem;">✂️ Launch CropAI Tool</a>
+      <a href="/" class="btn btn-secondary" style="padding: 0.8rem 1.8rem;">← Back to Homepage</a>
+    </div>
+
+    <div class="helpful-links">
+      <h2>Popular Pages</h2>
+      <div class="links-grid">
+        <a href="/crop-image-by-text">✂️ Crop Image by Text</a>
+        <a href="/background-remover">🪄 AI Background Remover</a>
+        <a href="/faq">❓ Frequently Asked Questions</a>
+        <a href="/about">ℹ️ About CropAI</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <nav aria-label="Footer navigation"
+      style="margin-bottom: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/faq">FAQ</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+      <a href="/app">Open the Tool</a>
+    </nav>
+    <p>CropAI · Free AI image cropping & background removal</p>
+  </footer>
+</body>
+</html>

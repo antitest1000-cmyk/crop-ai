@@ -1,0 +1,22 @@
+# Environment / secrets — NEVER commit these
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Build outputs
+dist/
+build/
+
+# Uploaded / temp files (server runtime)
+uploads/
+tmp/

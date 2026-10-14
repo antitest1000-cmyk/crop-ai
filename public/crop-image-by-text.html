@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop Image by Text: AI Crops Any Object | CropAI</title>
+  <meta name="description" content="Crop image by text using AI. Type what you want to cut out and CropAI detects the subject with pixel precision. Free, fast, no sign-up required." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://cropai.app/crop-image-by-text" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="/img/hero-before-after.webp" fetchpriority="high" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="CropAI" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://cropai.app/crop-image-by-text" />
+  <meta property="og:title" content="Crop Image by Text: AI Crops Any Object | CropAI" />
+  <meta property="og:description" content="Type what you want to cut out—like 'the blue coffee cup' or 'the dog on the left'—and CropAI finds it instantly. 100% free online AI tool." />
+  <meta property="og:image" content="https://cropai.app/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Crop Image by Text with AI | CropAI" />
+  <meta name="twitter:description" content="Isolate subjects instantly by describing them. Free AI image cropper with no watermark." />
+  <meta name="twitter:image" content="https://cropai.app/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cropai.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Crop Image by Text",
+            "item": "https://cropai.app/crop-image-by-text"
+          }
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://cropai.app/crop-image-by-text#app",
+        "name": "CropAI Text-Prompt Image Cropper",
+        "url": "https://cropai.app/crop-image-by-text",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any (web browser)",
+        "description": "Crop images by text description using neural vision AI. Free, instant browser tool.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://cropai.app/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cropai.app/crop-image-by-text#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How accurately can AI crop an image by text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CropAI leverages frontier multimodal vision models capable of understanding spatial relationships, relative colors, overlapping subjects, and contextual phrasing. When you enter a prompt like 'the vintage leather chair next to the floor lamp', the AI identifies the exact bounding coordinates with pixel precision, ensuring clean boundaries without clipping edges."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do if my photo contains multiple similar items?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can provide directional cues in your text prompt, such as 'the red sneaker on the left', 'the person wearing sunglasses', or 'the topmost logo'. If you want every instance, simply prompt in plural (e.g., 'all yellow balloons') and CropAI will detect each item and let you batch-download them."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I remove the background while cropping by text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Before clicking Process, toggle the 'Remove Background' option. CropAI will locate your specified item via text and execute alpha-matte segmentation to output a transparent PNG of the isolated subject."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to sign up or pay to crop images by text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. CropAI is completely free to use online with no login, no subscription, and no watermarks. You can upload an image, type your prompt, and download the finished crop immediately."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my uploaded photos kept private?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Uploaded photos are used exclusively for object detection and are automatically and permanently deleted from our servers within 1 hour. We never sell your images or use them to train public models."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .page-container {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: var(--sp-2xl) var(--sp-lg);
+      position: relative;
+      z-index: 1;
+    }
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: var(--sp-xl);
+    }
+    .breadcrumbs a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      color: var(--color-primary-light);
+    }
+    .hero-section {
+      text-align: center;
+      margin-bottom: var(--sp-3xl);
+    }
+    .hero-section h1 {
+      font-size: clamp(2rem, 4.8vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: var(--sp-md);
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-section .intro-lead {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto var(--sp-xl);
+      line-height: 1.75;
+    }
+    .hero-image-box {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+      margin: var(--sp-2xl) 0;
+    }
+    .hero-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .content-section {
+      margin-bottom: var(--sp-3xl);
+    }
+    .content-section h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: var(--sp-lg);
+    }
+    .content-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: var(--sp-md);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--sp-lg);
+      margin: var(--sp-xl) 0;
+    }
+    .step-card {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
+      position: relative;
+    }
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--sp-md);
+    }
+    .step-card h3 {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--sp-lg);
+      margin: var(--sp-xl) 0;
+    }
+    .benefit-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-lg);
+    }
+    .benefit-icon {
+      font-size: 1.8rem;
+      margin-bottom: var(--sp-sm);
+    }
+    .benefit-item h3 {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .example-table-wrapper {
+      overflow-x: auto;
+      margin: var(--sp-xl) 0;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+    }
+    .example-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .example-table th, .example-table td {
+      padding: var(--sp-md) var(--sp-lg);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .example-table th {
+      background: var(--color-surface-2);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .example-table td {
+      color: var(--text-secondary);
+    }
+    .faq-list-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--sp-md);
+      overflow: hidden;
+    }
+    .faq-list-item summary {
+      padding: var(--sp-lg) var(--sp-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-list-item summary::after {
+      content: "＋";
+      font-size: 1.2rem;
+      color: var(--color-primary-light);
+    }
+    .faq-list-item[open] summary::after {
+      content: "−";
+    }
+    .faq-ans {
+      padding: 0 var(--sp-xl) var(--sp-lg);
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .cta-banner {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--sp-2xl);
+      text-align: center;
+      margin-top: var(--sp-3xl);
+    }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-md);
+      justify-content: center;
+      margin-top: var(--sp-xl);
+    }
+    .related-links a {
+      color: var(--color-primary-light);
+      text-decoration: underline;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lgtext)"/>
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            <defs><linearGradient id="lgtext" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav>
+        <a href="/" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">Home</a>
+        <a href="/faq" style="color: var(--text-secondary); font-size: 0.9rem; margin-right: 1.5rem;">FAQ</a>
+        <a href="/app" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Open Tool →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container" role="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span aria-current="page">Crop Image by Text</span>
+    </nav>
+
+    <!-- 1. H1 + 2-sentence intro + CTA button -->
+    <section class="hero-section">
+      <h1>Crop Image by Text: AI Crops Any Object</h1>
+      <p class="intro-lead">
+        Learn how to crop image by text prompts in seconds without manual masking or complex selection tools. Just describe the exact object you want to isolate, and CropAI's vision model detects boundaries and delivers an immaculate cutout.
+      </p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
+        ✂️ Crop Your Image by Text Now →
+      </a>
+
+      <!-- 2. Before/After image -->
+      <div class="hero-image-box">
+        <img src="/img/hero-before-after.webp" width="1200" height="675"
+          alt="Before and after comparison of cropping an image by text prompt" />
+      </div>
+    </section>
+
+    <!-- 3. How it works in 3 steps -->
+    <section class="content-section" aria-labelledby="how-it-works-title">
+      <h2 id="how-it-works-title">How to Crop Images by Text in 3 Simple Steps</h2>
+      <p>
+        Cropping photos with artificial intelligence eliminates the steep learning curve of photo editing software. Follow these three quick steps:
+      </p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Upload Your Photo</h3>
+          <p>Drag and drop any PNG, JPG, or WEBP image up to 10 MB into CropAI. Your upload is secured and encrypted immediately.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Describe the Object</h3>
+          <p>Type what you want to extract into the prompt box (e.g. "the red sports car on the left" or "person with the green hat").</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Download Instant Result</h3>
+          <p>The AI isolates the target with bounding coordinates. Download your cropped image or export a transparent PNG in one click.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Why use CropAI for this -->
+    <section class="content-section" aria-labelledby="why-cropai-title">
+      <h2 id="why-cropai-title">Why Use AI to Crop Images by Text Prompt</h2>
+      <p>
+        Traditional photo cropping tools force you to manually drag rectangle handles or zoom in to painstakingly click lasso control points around edges. CropAI re-engineers this workflow around intuitive natural language:
+      </p>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon">🎯</div>
+          <h3>Semantic Understanding</h3>
+          <p>The vision model understands context, spatial references ("top-right", "in front"), color shades, and object hierarchies effortlessly.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">⏱️</div>
+          <h3>Sub-3-Second Processing</h3>
+          <p>Extract objects in fractions of the time it takes to launch desktop editors or manually paint segmentation masks.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🪄</div>
+          <h3>Optional Background Removal</h3>
+          <p>Seamlessly toggle alpha transparency to get an isolated 32-bit PNG cutout ready for graphic compositions.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🔒</div>
+          <h3>Zero Data Footprint</h3>
+          <p>No account required, no sign-up friction, and all temporary image files are auto-purged from our servers within 1 hour.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Examples and tips -->
+    <section class="content-section" aria-labelledby="examples-title">
+      <h2 id="examples-title">Tips and Prompt Examples for Best Results</h2>
+      <p>
+        To get the sharpest crop image by text results, be descriptive when your photo features crowded scenes or overlapping subjects. Here are practical prompt patterns:
+      </p>
+      <div class="example-table-wrapper">
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Basic Prompt</th>
+              <th>Optimal Descriptive Prompt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Group portraits</td>
+              <td>"girl"</td>
+              <td>"the girl smiling in the yellow sweater on the left"</td>
+            </tr>
+            <tr>
+              <td>Product tables</td>
+              <td>"watch"</td>
+              <td>"the black chronograph watch resting on the wooden stand"</td>
+            </tr>
+            <tr>
+              <td>Street photos</td>
+              <td>"car"</td>
+              <td>"the vintage blue convertible driving in the foreground"</td>
+            </tr>
+            <tr>
+              <td>Multi-object extraction</td>
+              <td>"shoes"</td>
+              <td>"all pairs of athletic sneakers on the shelf"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        If your output requires fine-tuning, use the built-in Adjust feature to type follow-up directives such as <em>"crop tighter around the borders"</em> or <em>"include the shadow cast on the table"</em>.
+      </p>
+    </section>
+
+    <!-- 6. FAQ Block with matching schema -->
+    <section class="content-section" aria-labelledby="faq-section-title">
+      <h2 id="faq-section-title">Frequently Asked Questions About Text-Based Image Cropping</h2>
+      <div class="faq-list">
+        <details class="faq-list-item" open>
+          <summary>How accurately can AI crop an image by text?</summary>
+          <div class="faq-ans">
+            <p>CropAI leverages frontier multimodal vision models capable of understanding spatial relationships, relative colors, overlapping subjects, and contextual phrasing. When you enter a prompt like 'the vintage leather chair next to the floor lamp', the AI identifies the exact bounding coordinates with pixel precision, ensuring clean boundaries without clipping edges.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>What should I do if my photo contains multiple similar items?</summary>
+          <div class="faq-ans">
+            <p>You can provide directional cues in your text prompt, such as 'the red sneaker on the left', 'the person wearing sunglasses', or 'the topmost logo'. If you want every instance, simply prompt in plural (e.g., 'all yellow balloons') and CropAI will detect each item and let you batch-download them.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Can I remove the background while cropping by text?</summary>
+          <div class="faq-ans">
+            <p>Yes. Before clicking Process, toggle the 'Remove Background' option. CropAI will locate your specified item via text and execute alpha-matte segmentation to output a transparent PNG of the isolated subject.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Do I need to sign up or pay to crop images by text?</summary>
+          <div class="faq-ans">
+            <p>No. CropAI is completely free to use online with no login, no subscription, and no watermarks. You can upload an image, type your prompt, and download the finished crop immediately.</p>
+          </div>
+        </details>
+        <details class="faq-list-item">
+          <summary>Are my uploaded photos kept private?</summary>
+          <div class="faq-ans">
+            <p>Yes. Uploaded photos are used exclusively for object detection and are automatically and permanently deleted from our servers within 1 hour. We never sell your images or use them to train public models.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 7. Closing CTA + Internal links -->
+    <section class="cta-banner">
+      <h2>Ready to crop image by text with AI?</h2>
+      <p>Skip the tedious manual selection tools. Describe what you need, let the AI detect it, and download your cutout in seconds.</p>
+      <a href="/app" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.2rem;">
+        ✂️ Launch Free Cropper Tool →
+      </a>
+      <div class="related-links">
+        <a href="/">CropAI Homepage</a>
+        <a href="/background-remover">AI Background Remover</a>
+        <a href="/extract-object-from-image">Extract Object from Image</a>
+        <a href="/faq">Full CropAI FAQ</a>
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <nav aria-label="Footer navigation"
+      style="margin-bottom: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/faq">FAQ</a>
+      <a href="/crop-image-by-text">Crop by Text</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+      <a href="/app">Open Tool</a>
+    </nav>
+    <p>CropAI · Free AI image cropping & background removal tool</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free AI Image Cropper & Background Remover | CropAI</title>
+  <meta name="description"
+    content="Describe what to crop and CropAI finds it. Free AI image cropper with background removal and transparent PNG export. No signup, files deleted in 1 hour." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#05050f" />
+  <link rel="canonical" href="https://cropai.app/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="/img/hero-before-after.webp" fetchpriority="high" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="CropAI" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cropai.app/" />
+  <meta property="og:title" content="CropAI: Crop Any Object in a Photo by Describing It" />
+  <meta property="og:description"
+    content='Type what you want, like "the red car on the left", and AI crops it or removes the background. Free, no signup.' />
+  <meta property="og:image" content="https://cropai.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="CropAI cropping a red car from a street photo using a text prompt" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CropAI: Tell the AI what to crop" />
+  <meta name="twitter:description"
+    content="Upload an image, describe the object, download a clean crop or transparent PNG. Free." />
+  <meta name="twitter:image" content="https://cropai.app/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cropai.app/#org",
+        "name": "CropAI",
+        "url": "https://cropai.app/",
+        "logo": "https://cropai.app/img/logo-512.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cropai.app/#website",
+        "url": "https://cropai.app/",
+        "name": "CropAI",
+        "publisher": { "@id": "https://cropai.app/#org" }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://cropai.app/#app",
+        "name": "CropAI",
+        "url": "https://cropai.app/app",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any (web browser)",
+        "description": "Free AI image cropper. Describe an object in plain English and CropAI crops it or removes the background, exporting a transparent PNG.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://cropai.app/#org" },
+        "featureList": [
+          "Crop by text prompt",
+          "AI background removal",
+          "Transparent PNG export",
+          "Batch extract multiple objects",
+          "Refine results with follow-up instructions"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cropai.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is CropAI free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CropAI is completely free and requires no account or credit card. Just upload an image and start cropping."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to my uploaded images?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your image is sent to our AI provider (OpenRouter / Google Gemini) to detect the object you described. The file on our server is automatically deleted within 1 hour. We do not store, sell, or use your images for any other purpose. Read our Privacy Policy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I crop an object from a photo with AI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open the CropAI tool, upload your image, and type a description of what you want to crop — for example, 'the dog on the right' or 'the logo in the top corner'. CropAI's AI finds the object and returns a tight crop in seconds."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can CropAI remove the background from an image?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Before submitting your prompt, check the 'Remove Background (Transparent PNG)' option. CropAI will isolate the subject and return a transparent PNG, perfect for placing on any background."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What image formats does CropAI support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CropAI accepts PNG, JPG (JPEG), and WEBP images up to 10 MB in size. Results can be downloaded as PNG or JPG."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What AI model powers CropAI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CropAI uses state-of-the-art vision language models — Google Gemini by default — accessed via the OpenRouter API. The AI analyzes your image and returns precise object coordinates, which are then used to perform the crop."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if the AI finds multiple matching objects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If your prompt is ambiguous, CropAI will show you all matching objects and let you select the ones you want. You can then extract them individually or all at once as a ZIP file."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── Landing-page only styles ───────────────────────────────────── */
+    .lp-nav-link {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color var(--trans-fast);
+      text-decoration: none;
+    }
+
+    .lp-nav-link:hover {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .lp-section {
+      padding: var(--sp-2xl) 0;
+    }
+
+    .lp-section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-primary-light);
+      margin-bottom: var(--sp-sm);
+    }
+
+    .lp-h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: var(--sp-md);
+    }
+
+    .lp-lead {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-bottom: var(--sp-xl);
+    }
+
+    /* Hero */
+    .hero-cta-group {
+      display: flex;
+      gap: var(--sp-md);
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-trust {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: var(--sp-md);
+    }
+
+    .hero-img-wrapper {
+      margin-top: var(--sp-2xl);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 24px 80px rgba(124, 58, 237, 0.18);
+    }
+
+    .hero-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Steps */
+    .steps-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--sp-lg);
+      counter-reset: steps;
+      list-style: none;
+      padding: 0;
+    }
+
+    .steps-list li {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl) var(--sp-lg);
+      position: relative;
+      counter-increment: steps;
+    }
+
+    .steps-list li::before {
+      content: counter(steps);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: var(--sp-md);
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+    }
+
+    .steps-list h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .steps-list p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Feature cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--sp-lg);
+    }
+
+    .feature-card {
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
+      transition: border-color var(--trans-normal), box-shadow var(--trans-normal), transform var(--trans-spring);
+    }
+
+    .feature-card:hover {
+      border-color: rgba(124, 58, 237, 0.4);
+      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .feature-card .fc-icon {
+      font-size: 2rem;
+      margin-bottom: var(--sp-sm);
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    a.feature-card {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    a.feature-card:hover {
+      text-decoration: none;
+    }
+
+    a.feature-card .card-cta {
+      margin-top: auto;
+      padding-top: var(--sp-md);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--color-primary-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color var(--trans-fast), transform var(--trans-fast);
+    }
+
+    a.feature-card:hover .card-cta {
+      color: var(--color-accent);
+      transform: translateX(4px);
+    }
+
+    /* Use cases */
+    .use-cases-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-sm);
+    }
+
+    .use-case-tag {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: 0.5rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* Privacy strip */
+    .privacy-strip {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-lg);
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-lg) var(--sp-xl);
+      flex-wrap: wrap;
+    }
+
+    .privacy-strip .ps-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .privacy-strip .ps-item .ps-icon {
+      font-size: 1.2rem;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-sm);
+    }
+
+    .faq-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--trans-normal);
+    }
+
+    .faq-item:hover {
+      border-color: rgba(124, 58, 237, 0.35);
+    }
+
+    .faq-item summary {
+      padding: var(--sp-lg) var(--sp-xl);
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--color-primary-light);
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform var(--trans-normal);
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-item[open] {
+      border-color: rgba(124, 58, 237, 0.4);
+    }
+
+    .faq-answer {
+      padding: 0 var(--sp-xl) var(--sp-lg);
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .faq-answer a {
+      color: var(--color-primary-light);
+    }
+
+    /* CTA section */
+    .lp-cta-section {
+      text-align: center;
+      background: var(--color-surface);
+      background-image: var(--gradient-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--sp-3xl) var(--sp-xl);
+      box-shadow: 0 0 60px rgba(124, 58, 237, 0.1);
+    }
+
+    /* Divider */
+    .lp-divider {
+      border: none;
+      border-top: 1px solid var(--color-border-subtle);
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-cta-group .btn {
+        justify-content: center;
+      }
+
+      .privacy-strip {
+        flex-direction: column;
+        gap: var(--sp-sm);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ── Header ──────────────────────────────────────────────────────── -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="CropAI Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#lGrad)" />
+            <path d="M8 12 L14 12 L14 8" stroke="white" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M24 12 L18 12 L18 8" stroke="white" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M8 20 L14 20 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M24 20 L18 20 L18 24" stroke="white" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="rgba(255,255,255,0.9)" />
+            <defs>
+              <linearGradient id="lGrad" x1="0" y1="0" x2="32" y2="32">
+                <stop offset="0%" stop-color="#7c3aed" />
+                <stop offset="100%" stop-color="#06b6d4" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">CropAI</span>
+      </a>
+      <nav aria-label="Main navigation" style="display: flex; align-items: center; gap: 1.75rem;">
+        <a href="#features" class="lp-nav-link">Features</a>
+        <a href="#how-it-works" class="lp-nav-link">How it works</a>
+        <a href="#faq" class="lp-nav-link">FAQ</a>
+        <a href="/app" class="btn btn-primary" style="padding: 0.5rem 1.1rem; font-size: 0.88rem;">Open the tool →</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Main ─────────────────────────────────────────────────────────── -->
+  <main role="main">
+    <div
+      style="max-width: 920px; margin: 0 auto; padding: var(--sp-3xl) var(--sp-xl) var(--sp-2xl); position: relative; z-index: 1;">
+
+      <!-- ── HERO ──────────────────────────────────────────────────── -->
+      <section id="hero" class="lp-section" aria-labelledby="hero-h1"
+        style="text-align: center; padding-top: var(--sp-3xl);">
+        <p class="lp-section-label">Free AI Image Tool</p>
+        <h1 id="hero-h1" class="hero-title">
+          AI Image Cropper: Crop Any Object<br />
+          <span class="gradient-text">by Describing It</span>
+        </h1>
+        <p class="lp-lead" style="margin: 0 auto var(--sp-xl);">
+          Tell the AI what to crop — in plain English. CropAI finds it, extracts it, and returns a tight crop or
+          transparent PNG. No Photoshop, no signup, no cost.
+        </p>
+        <div class="hero-cta-group">
+          <a href="/app" class="btn btn-primary" style="font-size: 1rem; padding: 0.9rem 1.8rem;">
+            ✂️ Try CropAI Free →
+          </a>
+          <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+        </div>
+        <p class="hero-trust">No signup · No credit card · Files deleted in 1 hour</p>
+        <div class="hero-img-wrapper">
+          <picture>
+            <source srcset="/img/hero-before-after.webp" type="image/webp">
+            <img src="/img/hero-before-after.jpg" width="1200" height="675" fetchpriority="high"
+              alt="Before and after: a street photo and the red car cropped out with a transparent background" />
+          </picture>
+        </div>
+      </section>
+
+      <hr class="lp-divider" />
+
+      <!-- ── HOW IT WORKS ─────────────────────────────────────────── -->
+      <section id="how-it-works" class="lp-section" aria-labelledby="how-h2">
+        <p class="lp-section-label">Simple process</p>
+        <h2 id="how-h2" class="lp-h2">How to crop an image with AI in 3 steps</h2>
+        <ol class="steps-list" aria-label="Steps to use CropAI">
+          <li>
+            <img src="/img/step-upload.webp" width="600" height="400" loading="lazy" decoding="async"
+              alt="Upload interface showing supported formats"
+              style="width: 100%; height: auto; border-radius: var(--radius-lg); margin-bottom: var(--sp-md); border: 1px solid var(--color-border);" />
+            <h3>Upload your image</h3>
+            <p>Drag and drop or click to browse. Supports PNG, JPG, and WEBP up to 10 MB. No account needed.</p>
+          </li>
+          <li>
+            <img src="/img/step-describe.webp" width="600" height="400" loading="lazy" decoding="async"
+              alt="Text input field with the prompt 'the person on the left'"
+              style="width: 100%; height: auto; border-radius: var(--radius-lg); margin-bottom: var(--sp-md); border: 1px solid var(--color-border);" />
+            <h3>Describe what to crop</h3>
+            <p>Type a plain English description like "the person on the left" or "the company logo in the corner". Be as
+              specific or as casual as you like.</p>
+          </li>
+          <li>
+            <img src="/img/step-download.webp" width="600" height="400" loading="lazy" decoding="async"
+              alt="Download buttons for PNG and JPG next to the cropped result"
+              style="width: 100%; height: auto; border-radius: var(--radius-lg); margin-bottom: var(--sp-md); border: 1px solid var(--color-border);" />
+            <h3>Download your result</h3>
+            <p>Get a perfectly tight crop or a transparent PNG with the background removed. Download as PNG or JPG
+              instantly.</p>
+          </li>
+        </ol>
+      </section>
+
+      <hr class="lp-divider" />
+
+      <!-- ── DEMO ─────────────────────────────────────────────────── -->
+      <section id="demo" class="lp-section" aria-labelledby="demo-h2">
+        <h2 id="demo-h2" class="lp-h2" style="text-align: center; margin-bottom: var(--sp-xl);">See CropAI in action
+        </h2>
+        <div
+          style="border-radius: var(--radius-2xl); overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 16px 40px rgba(0,0,0,0.4);">
+          <video width="1280" height="720" autoplay muted loop playsinline preload="none" poster="/img/demo-poster.webp"
+            aria-label="Demo: typing 'the red car' and CropAI cutting it out with a transparent background"
+            style="width: 100%; height: auto; display: block; background: var(--color-surface-2);">
+            <source src="/video/demo.mp4" type="video/mp4">
+          </video>
+        </div>
+      </section>
+
+      <hr class="lp-divider" />
+
+      <!-- ── FEATURES ─────────────────────────────────────────────── -->
+      <section id="features" class="lp-section" aria-labelledby="features-h2">
+        <p class="lp-section-label">What CropAI can do</p>
+        <h2 id="features-h2" class="lp-h2">Features</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <img src="/img/feature-smart-crop.webp" width="800" height="600" loading="lazy" decoding="async"
+              alt="A perfectly cropped region bounding an object"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-md);" />
+            <div class="fc-icon">✂️</div>
+            <h3>Smart crop by text prompt</h3>
+            <p>Describe any object — by position, color, size, or relation to other objects — and the AI returns a
+              pixel-perfect bounding-box crop. No manual selection required.</p>
+          </div>
+          <div class="feature-card">
+            <img src="/img/feature-bg-remover.webp" width="800" height="600" loading="lazy" decoding="async"
+              alt="A subject cleanly isolated on a transparent checkerboard background"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-md);" />
+            <div class="fc-icon">🪄</div>
+            <h3>AI background remover</h3>
+            <p>Enable "Remove Background" to get a transparent PNG. The AI isolates the subject at the pixel level,
+              cutting cleanly around hair, fur, and irregular edges.</p>
+          </div>
+          <div class="feature-card">
+            <img src="/img/feature-batch.webp" width="800" height="600" loading="lazy" decoding="async"
+              alt="Grid of multiple extracted objects ready for batch download"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-md);" />
+            <div class="fc-icon">📦</div>
+            <h3>Batch extract multiple objects</h3>
+            <p>When your prompt matches several objects, CropAI finds them all. Select the ones you want and
+              batch-extract them in one click, downloading a ZIP with all results.</p>
+          </div>
+          <div class="feature-card">
+            <img src="/img/feature-refine.webp" width="800" height="600" loading="lazy" decoding="async"
+              alt="Adjust panel showing a follow-up instruction to refine the crop"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-md);" />
+            <div class="fc-icon">🎯</div>
+            <h3>Refine with follow-up instructions</h3>
+            <p>Not quite right? Use the Adjust panel to give a follow-up instruction — "include the shadow", "crop
+              tighter", or "remove the hand" — without re-uploading.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="lp-divider" />
+
+      <!-- ── USE CASES ────────────────────────────────────────────── -->
+      <section id="use-cases" class="lp-section" aria-labelledby="uc-h2">
+        <p class="lp-section-label">Who uses CropAI</p>
+        <h2 id="uc-h2" class="lp-h2">Built for creators, sellers, and designers</h2>
+        <p class="lp-lead">
+          Anyone who has ever opened Photoshop just to cut something out will love CropAI. It handles the most common
+          image editing task in seconds, with zero skill required.
+        </p>
+        <div class="features-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));"
+          aria-label="Use cases">
+          <a href="/product-photo-background-remover" class="feature-card">
+            <img src="/img/usecase-ecommerce.webp" width="600" height="400" loading="lazy" decoding="async"
+              alt="Product photo isolated on a clean background"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-sm);" />
+            <h3 style="font-size: 1.1rem; margin-top: var(--sp-sm);">E-commerce product photos</h3>
+            <p>Clean product photos on white or transparent backgrounds in seconds.</p>
+            <span class="card-cta">Explore use case →</span>
+          </a>
+          <a href="/youtube-thumbnail-cutout" class="feature-card">
+            <img src="/img/usecase-thumbnails.webp" width="600" height="400" loading="lazy" decoding="async"
+              alt="A person extracted to be used in a YouTube thumbnail"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-sm);" />
+            <h3 style="font-size: 1.1rem; margin-top: var(--sp-sm);">YouTube thumbnails</h3>
+            <p>Extract subjects quickly to composite engaging video thumbnails.</p>
+            <span class="card-cta">Explore use case →</span>
+          </a>
+          <a href="/profile-picture-cropper" class="feature-card">
+            <img src="/img/usecase-profiles.webp" width="600" height="400" loading="lazy" decoding="async"
+              alt="A clean headshot crop for a profile picture"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-sm);" />
+            <h3 style="font-size: 1.1rem; margin-top: var(--sp-sm);">Profile pictures</h3>
+            <p>Crop the perfect headshot out of any group photo instantly.</p>
+            <span class="card-cta">Explore use case →</span>
+          </a>
+          <a href="/extract-object-from-image" class="feature-card">
+            <img src="/img/usecase-design.webp" width="600" height="400" loading="lazy" decoding="async"
+              alt="An isolated design asset extracted from a complex image"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-sm);" />
+            <h3 style="font-size: 1.1rem; margin-top: var(--sp-sm);">Design assets</h3>
+            <p>Pull isolated assets out of reference images without manual masking.</p>
+            <span class="card-cta">Explore use case →</span>
+          </a>
+          <a href="/sticker-maker" class="feature-card">
+            <img src="/img/usecase-social.webp" width="600" height="400" loading="lazy" decoding="async"
+              alt="A cutout ready for a social media overlay"
+              style="width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: var(--sp-sm);" />
+            <h3 style="font-size: 1.1rem; margin-top: var(--sp-sm);">Social media prep</h3>
+            <p>Create flawless cutouts for Instagram stories, TikTok overlays, and posts.</p>
+            <span class="card-cta">Explore use case →</span>
+          </a>
+        </div>
+      </section>
+
+      <hr class="lp-divider" />
+
+      <!-- ── PRIVACY STRIP ─────────────────────────────────────────── -->
+      <section id="privacy" class="lp-section" aria-labelledby="privacy-h2"
+        style="display: flex; gap: var(--sp-2xl); align-items: center; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 300px;">
+          <h2 id="privacy-h2" class="lp-h2" style="margin-bottom: var(--sp-lg);">Your images, handled carefully</h2>
+          <div class="privacy-strip" style="background: none; border: none; padding: 0; gap: var(--sp-md);" role="list"
+            aria-label="Privacy guarantees">
+            <div class="ps-item" role="listitem">
+              <span class="ps-icon">⏱️</span>
+              <span>Files automatically deleted within <strong>1 hour</strong></span>
+            </div>
+            <div class="ps-item" role="listitem">
+              <span class="ps-icon">🚫</span>
+              <span>We never sell your images</span>
+            </div>
+            <div class="ps-item" role="listitem">
+              <span class="ps-icon">🔑</span>
+              <span>No account required</span>
+            </div>
+            <div class="ps-item" role="listitem">
+              <span class="ps-icon">🤖</span>
+              <span>Images sent to AI provider to detect the object</span>
+            </div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: var(--sp-lg);">
+            Images are processed by our AI provider (OpenRouter / Google Gemini) solely to locate the object you
+            described. <a href="/privacy">Read our full Privacy Policy</a> for details.
+          </p>
+        </div>
+        <div
+          style="flex: 1; min-width: 300px; max-width: 400px; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 12px 32px rgba(16,185,129,0.1);">
+          <img src="/img/privacy-shield.webp" width="600" height="400" loading="lazy" decoding="async"
+            alt="Privacy shield icon representing data protection" style="width: 100%; height: auto; display: block;" />
+        </div>
+      </section>
+
+      <hr class="lp-divider" />
+
+      <!-- ── FAQ ──────────────────────────────────────────────────── -->
+      <section id="faq" class="lp-section" aria-labelledby="faq-h2">
+        <p class="lp-section-label">Common questions</p>
+        <h2 id="faq-h2" class="lp-h2">Frequently asked questions</h2>
+
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>Is CropAI free to use?</summary>
+            <div class="faq-answer">
+              <p>Yes. CropAI is completely free and requires no account or credit card. Just upload an image and start
+                cropping.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What happens to my uploaded images?</summary>
+            <div class="faq-answer">
+              <p>Your image is sent to our AI provider (OpenRouter / Google Gemini) to detect the object you described.
+                The file on our server is automatically deleted within 1 hour. We do not store, sell, or use your images
+                for any other purpose. <a href="/privacy">Read our Privacy Policy</a>.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do I crop an object from a photo with AI?</summary>
+            <div class="faq-answer">
+              <p>Open the <a href="/app">CropAI tool</a>, upload your image, and type a description of what you want to
+                crop — for example, "the dog on the right" or "the logo in the top corner". CropAI's AI finds the object
+                and returns a tight crop in seconds.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can CropAI remove the background from an image?</summary>
+            <div class="faq-answer">
+              <p>Yes. Before submitting your prompt, check the "Remove Background (Transparent PNG)" option. CropAI will
+                isolate the subject and return a transparent PNG, perfect for placing on any background.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What image formats does CropAI support?</summary>
+            <div class="faq-answer">
+              <p>CropAI accepts PNG, JPG (JPEG), and WEBP images up to 10 MB in size. Results can be downloaded as PNG
+                or JPG.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What AI model powers CropAI?</summary>
+            <div class="faq-answer">
+              <p>CropAI uses state-of-the-art vision language models — Google Gemini by default — accessed via the <a
+                  href="https://openrouter.ai" target="_blank" rel="noopener">OpenRouter</a> API. The AI analyzes your
+                  image and returns precise object coordinates, which are then used to perform the crop.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What if the AI finds multiple matching objects?</summary>
+            <div class="faq-answer">
+              <p>If your prompt is ambiguous, CropAI will show you all matching objects and let you select the ones you
+                want. You can then extract them individually or all at once as a ZIP file.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <hr class="lp-divider" />
+
+      <!-- ── FINAL CTA ─────────────────────────────────────────────── -->
+      <section id="cta" class="lp-section lp-cta-section" aria-labelledby="cta-h2"
+        style="background-image: linear-gradient(rgba(5, 5, 15, 0.8), rgba(5, 5, 15, 0.8)), url('/img/cta-bg.webp'); background-size: cover; background-position: center;">
+        <p class="lp-section-label" style="color: #a78bfa;">Get started</p>
+        <h2 id="cta-h2" class="lp-h2" style="margin-bottom: var(--sp-md); color: white;">Ready to crop smarter?</h2>
+        <p class="lp-lead" style="margin: 0 auto var(--sp-xl); color: rgba(255,255,255,0.8);">
+          No signup. No Photoshop skills. Just describe what you want and let the AI do the work.
+        </p>
+        <a href="/app" class="btn btn-primary" style="font-size: 1rem; padding: 0.9rem 2rem;">
+          ✂️ Open CropAI Free →
+        </a>
+        <p class="hero-trust" style="margin-top: var(--sp-md); color: rgba(255,255,255,0.6);">Free · No signup · Files
+          deleted in 1 hour</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <nav aria-label="Footer navigation"
+      style="margin-bottom: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+      <a href="/faq">FAQ</a>
+      <a href="/app">Open the Tool</a>
+    </nav>
+    <p>CropAI · Powered by <a href="https://openrouter.ai" target="_blank" rel="noopener noreferrer">OpenRouter</a>
+      Vision AI · Images auto-deleted after 1 hour</p>
+  </footer>
+
+</body>
+
+</html>
