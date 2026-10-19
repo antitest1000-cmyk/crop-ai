@@ -1,0 +1,19 @@
+# Cloudflare Pages Redirects & Rewrites
+
+# Clean URLs
+/app                               /app.html                               200
+/faq                               /faq.html                               200
+/about                             /about.html                             200
+/privacy                           /privacy.html                           200
+/terms                             /terms.html                             200
+/contact                           /contact.html                           200
+/background-remover                /background-remover.html                200
+/crop-image-by-text                /crop-image-by-text.html                200
+/product-photo-background-remover  /product-photo-background-remover.html  200
+/extract-object-from-image         /extract-object-from-image.html         200
+/youtube-thumbnail-cutout          /youtube-thumbnail-cutout.html          200
+/profile-picture-cropper           /profile-picture-cropper.html           200
+/sticker-maker                     /sticker-maker.html                     200
+
+# 404 fallback
+/*                                 /404.html                               404
