@@ -628,7 +628,7 @@ function showResultStage(data, multiResults = null) {
       card.style.cssText = 'background: rgba(255,255,255,0.03); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 12px; border: 1px solid rgba(255,255,255,0.1);';
       
       const img = document.createElement('img');
-      img.src = `${res.outputUrl}?t=${Date.now()}`;
+      img.src = `${API_BASE}${res.outputUrl}?t=${Date.now()}`;
       img.className = 'checkerboard';
       img.style.cssText = 'max-width: 100%; max-height: 120px; object-fit: contain; border-radius: 4px; margin-bottom: 12px; cursor: pointer; transition: transform 0.2s;';
       img.onmouseover = () => img.style.transform = 'scale(1.05)';
@@ -690,7 +690,7 @@ function showResultStage(data, multiResults = null) {
   dom.originalResultImg.alt = 'Original image';
 
   // Result image
-  dom.resultImg.src = `${data.outputUrl}?t=${Date.now()}`; // cache-bust
+  dom.resultImg.src = `${API_BASE}${data.outputUrl}?t=${Date.now()}`; // cache-bust
   dom.resultImg.alt = `Extracted: ${data.target}`;
 
   // For extractions, show checkerboard

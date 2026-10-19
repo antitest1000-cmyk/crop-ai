@@ -130,6 +130,8 @@ app.use(express.static(path.join(__dirname, '..', 'public'), {
 // Serve output images (outside public/, needs its own route)
 app.use('/outputs', (req, res, next) => {
   res.setHeader('X-Robots-Tag', 'noindex');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
   next();
 }, express.static(OUTPUTS_DIR));
 
