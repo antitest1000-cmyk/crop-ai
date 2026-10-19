@@ -146,7 +146,8 @@ async function segmentWithHuggingFace(imageBuffer, hint) {
  */
 async function segmentWithLocalPython(imageBuffer, hint) {
   return new Promise((resolve, reject) => {
-    const pythonProcess = spawn('python', [path.join(__dirname, 'remove_bg.py')]);
+    const pythonCmd = process.env.PYTHON_PATH || (process.platform === 'win32' ? 'python' : 'python3');
+    const pythonProcess = spawn(pythonCmd, [path.join(__dirname, 'remove_bg.py')]);
     
     let maskData = [];
     let errData = [];
