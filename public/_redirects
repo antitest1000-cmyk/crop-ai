@@ -14,6 +14,3 @@
 /youtube-thumbnail-cutout          /youtube-thumbnail-cutout.html          200
 /profile-picture-cropper           /profile-picture-cropper.html           200
 /sticker-maker                     /sticker-maker.html                     200
-
-# 404 fallback
-/*                                 /404.html                               404
