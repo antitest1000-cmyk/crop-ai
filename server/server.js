@@ -66,13 +66,21 @@ app.use(helmet({
   },
 }));
 
-const ALLOWED_ORIGINS = process.env.NODE_ENV === 'production'
-  ? [process.env.FRONTEND_URL].filter(Boolean)   // set FRONTEND_URL=https://your-site.netlify.app in Render dashboard
-  : ['*'];
+const ALLOWED_ORIGINS = [
+  'https://crop-ai.antitest1000.workers.dev',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
   origin: (origin, cb) => {
-    if (!origin || ALLOWED_ORIGINS.includes('*') || ALLOWED_ORIGINS.includes(origin)) return cb(null, true);
-    cb(new Error('Not allowed by CORS'));
+    if (!origin || 
+        ALLOWED_ORIGINS.includes('*') || 
+        ALLOWED_ORIGINS.includes(origin) || 
+        origin.endsWith('.workers.dev') || 
+        origin.endsWith('.pages.dev')) {
+      return cb(null, true);
+    }
+    return cb(null, true); // Allow all web origins for the public API
   }
 }));
 app.use(express.json({ limit: '1mb' }));

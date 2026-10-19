@@ -21,8 +21,8 @@
 // When the frontend is hosted on Netlify and the backend is on Render,
 // set window.CROPAI_API_BASE to the Render URL before this script loads,
 // OR define it in netlify.toml as a redirect proxy (see netlify.toml).
-// Falls back to '' (same origin) when running locally or on Render.
-const API_BASE = (typeof window !== 'undefined' && window.CROPAI_API_BASE) || '';
+const API_BASE = (typeof window !== 'undefined' && window.CROPAI_API_BASE) || 
+  (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? '' : 'https://crop-ai-1-77tz.onrender.com');
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
