@@ -154,7 +154,7 @@ async function analyzeImage({ imagePath, prompt, previousResult = null }) {
       { role: 'system', content: buildSystemPrompt() },
       buildUserMessage(imageBase64, mimeType, prompt, previousResult, meta.width, meta.height),
     ],
-    max_tokens: 4096,
+    max_tokens: 1000,
     temperature: 0.1, // Low temperature for deterministic, structured responses
   };
 

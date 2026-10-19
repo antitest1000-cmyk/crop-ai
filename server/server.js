@@ -381,6 +381,9 @@ app.post('/api/crop', async (req, res) => {
     if (err.code === 'ENOENT') {
       return res.status(404).json({ error: 'Image file not found. Please re-upload.' });
     }
+    if (err.message?.includes('credits') || err.message?.includes('quota') || err.status === 402) {
+      return res.status(402).json({ error: 'OpenRouter credit limit reached. Please check your credits at openrouter.ai.' });
+    }
     if (err.message?.includes('API key')) {
       return res.status(503).json({ error: 'AI service is unavailable. Check your API key.' });
     }
@@ -392,7 +395,7 @@ app.post('/api/crop', async (req, res) => {
       return res.status(422).json({ error: err.message });
     }
 
-    return res.status(500).json({ error: 'Processing failed. Please try again.' });
+    return res.status(500).json({ error: err.message || 'Processing failed. Please try again.' });
   }
 });
 
